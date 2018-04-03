@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Thatsmart</title>
+    <link rel="stylesheet" href="./static/node_modules/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_xz3b2im75ncm1jor.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <!-- 顶部栏开始 -->
+        <div class="wrapper-top">
+            <div class="container top_bar">
+                <div class="top_bar_content banxin clearfix">
+                    <ul class="user_login fl userName">
+                        <li class="userName-li">UserName<span class="iconfont icon-xiangshangjiantou-copy-copy-copy"></span></li>
+                        <div class="user-menu clearfix">
+                            <div>
+                                <img src="./static/images/user-img.png" alt="">
+                            </div>
+                            <p>
+                                <a href="" class="iconfont icon-bianji"><span>Edit</span></a>
+                                <a href="">Logout</a>
+                            </p>
+                        </div>
+                    </ul>
+                    <ul class="user-info fr">
+                        <li><a href="#">Vendor Background</a></li>
+                        <b>|</b>
+                        <li><a href="#">Open Shop</a></li>
+                        <b>|</b>
+                        <li><a href="#">Buyer Centre</a></li>
+                        <b>|</b>
+                        <li><a href="#">My order</a></li>
+                        <b>|</b>
+                        <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 顶部栏结束 -->
+        <div class="container">
+            <!-- 搜索栏开始 -->
+            <div class="search_bar">
+                <div class="search_bar_content banxin">
+                    <div class="logo_box">
+                        <a href="#">
+                            <img src="./static/images/thatsmart-logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="search_group">
+                        <i class="iconfont icon-sousuo"></i>
+                        <input type="text" placeholder="Products / Shops">
+                        <button>Search</button>
+                    </div>
+                    <div class="ad_01">
+                        <a href="#">
+                            <img src="./static/images/ad_01.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 搜索栏结束 -->
+            <!-- 导航栏开始 -->
+            <div class="navigation_bar">
+                <div class="navigation_bar_content banxin">
+                    <ul class="navigation_ul">
+                        <li>
+                            <a href="#"><i class="iconfont icon-fenlei"></i>All Categories</a>
+                            <ul class="navigation_child_ul">
+                                <li><a href="#">Food & Drink</a></li>
+                                <li><a href="#">Ticketing</a></li>
+                                <li><a href="#">Book</a></li>
+                                <li><a href="#">Electric equipment</a></li>
+                                <li><a href="#">Hotel</a></li>
+                                <li><a href="#">Toy</a></li>
+                                <li><a href="#">Kitchenware</a></li>
+                                <li><a href="#">Ticket</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Deals</a></li>
+                        <li><a href="#">Ticketing</a></li>
+                        <li><a href="#">Shops</a></li>
+                        <li><a href="#">Article</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 导航栏结束 -->
+
+            <!-- 导航轮播开始 -->
+            <div class="navigation_carousel">
+                <div class="swiper-container banner-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="./static/images/banner.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="./static/images/banner.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="./static/images/banner.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 导航轮播结束 -->
+            <!-- 推荐商品开始 -->
+            <div class="recommended_products">
+                <div class="recommended_products_content banxin">
+                    <div class="recommended_products_title">
+                        <span>
+                            <i class="iconfont icon-dianpu"></i>
+                            <em>Featured Shops</em>
+                        </span>
+                        <a href="#" class="more">More</a>
+                    </div>
+                    <div class="recommended_products_carousel">
+                        <div class="swiper-container shops-container">
+                            <div class="swiper-wrapper">
+                                <!-- <div class="swiper-slide" v-for="val in homeData">
+                                    <a v-bind:href="val.set_img">
+                                        <img v-bind:src="val.set_img" alt="">
+                                        <div class="shop_list_info">
+                                            {{val.merchant_name}}
+                                        </div>
+                                    </a>
+                                </div> -->
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/shop_02.jpg" alt="">
+                                        <div class="shop_list_info">
+                                            SONY POWER
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/shop_03.jpg" alt="">
+                                        <div class="shop_list_info">
+                                            JON BAG
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/shop_01.jpg" alt="">
+                                        <div class="shop_list_info">
+                                            KANGNAI
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/shop_02.jpg" alt="">
+                                        <div class="shop_list_info">
+                                            SONY POWER
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/shop_03.jpg" alt="">
+                                        <div class="shop_list_info">
+                                            JON BAG
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next swiper-button-white"></div>
+                            <div class="swiper-button-prev swiper-button-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 推荐商品结束 -->
+            <!-- 广告栏开始 -->
+            <div class="line_ad banxin">
+                <a href="#">
+                    <img src="./static/images/ad_02.jpg" alt="">
+                </a>
+            </div>
+            <!-- 广告栏结束 -->
+            <!-- 推荐商品开始 -->
+            <div class="recommended_products recommended_products2">
+                <div class="recommended_products_content banxin">
+                    <div class="recommended_products_title">
+                        <span>
+                            <i class="iconfont icon-shangpin"></i>
+                            <em>Featured Products</em>
+                        </span>
+                        <a href="#" class="more">More</a>
+                    </div>
+                    <div class="recommended_products_carousel">
+                        <div class="swiper-container shops-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_01.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_02.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_03.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                 <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_01.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_02.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_03.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next swiper-button-white"></div>
+                            <div class="swiper-button-prev swiper-button-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 推荐商品结束 -->
+            <!-- 广告栏开始 -->
+            <div class="line_ad banxin">
+                <a href="#">
+                    <img src="./static/images/ad_03.jpg" alt="">
+                </a>
+            </div>
+            <!-- 广告栏结束 -->
+            <!-- 推荐文章开始 -->
+            <div class="recommended_article">
+                <div class="recommended_article_content recommended_products_content banxin clearfix">
+                    <div class="recommended_article_title banxin recommended_products_title">
+                        <span>
+                            <i class="iconfont icon-wenzhang"></i>
+                            <em>Editor’s Pick</em>
+                        </span>
+                        <a href="#" class="more">More</a>
+                    </div>
+                    <div class="recommended_article_info clearfix">
+                        <div class="article_carousel fl">
+                            <div class="swiper-container pick-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./static/images/pick_01.jpg" alt="">
+                                        </a>
+                                        <div class="pick_list_info">
+                                            Brawl on the Bund White Party Tickets Now on Sale
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./static/images/pick_01.jpg" alt="">
+                                        </a>
+                                        <div class="pick_list_info">
+                                            Brawl on the Bund White Party Tickets Now on Sale
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="#">
+                                            <img src="./static/images/pick_01.jpg" alt="">
+                                        </a>
+                                        <div class="pick_list_info">
+                                            Brawl on the Bund White Party Tickets Now on Sale
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-button-next swiper-button-white"></div>
+                                <div class="swiper-button-prev swiper-button-white"></div>
+                            </div>
+                        </div>
+                        <div class="article_list_box fl">
+                            <a href="#">
+                                <div class="article_list">
+                                    <img src="./static/images/article_right01.jpg" alt="">
+                                    <div class="article_list_info">
+                                        <p>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</p>
+                                        <p>2017-11-23</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="article_list">
+                                    <img src="./static/images/article_right02.jpg" alt="">
+                                    <div class="article_list_info">
+                                        <p>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</p>
+                                        <p>2017-11-23</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="article_list">
+                                    <img src="./static/images/article_right03.jpg" alt="">
+                                    <div class="article_list_info">
+                                        <p>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</p>
+                                        <p>2017-11-23</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="article_list">
+                                    <img src="./static/images/article_right04.jpg" alt="">
+                                    <div class="article_list_info">
+                                        <p>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</p>
+                                        <p>2017-11-23</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 推荐文章结束 -->
+            <!-- 商品分类开始 -->
+            <div class="category">
+                <div class="category_content banxin clearfix">
+                    <a href="#">
+                        <div class="category_list">
+                            <img src="./static/images/deals.jpg" alt="">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="category_list">
+                            <img src="./static/images/categorys.jpg" alt="">
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="category_list">
+                            <img src="./static/images/ticketing.jpg" alt="">
+                        </div>
+                     </a>
+                    <a href="#">
+                        <div class="category_list">
+                            <img src="./static/images/coupons.jpg" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- 商品分类结束 -->
+        </div> 
+        <!-- 底部栏开始 -->
+        <div class="wrapper-bottom">
+            <div class="container">
+                <div class="container-bottom">
+                    <a href="javascript:;" class="iconfont icon-thmart"></a>
+                    <span class="copyright">© 2017 SH Aoyang Advertising Co., Ltd. 沪ICP备12038926号-2</span>
+                </div>
+            </div>
+        </div> 
+        <!-- 底部栏结束 -->
+    </div>
+    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./static/node_modules/swiper/dist/js/swiper.min.js"></script>
+    <script src="./api/home.js"></script>
+
+</body>
+
+</html>

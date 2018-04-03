@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Thatsmart</title>
+    <link rel="stylesheet" href="./static/node_modules/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_jxnog1n6rbe29.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 顶部栏开始 -->
+        <div class="top_bar">
+            <div class="top_bar_content banxin clearfix">
+                <ul class="user_login fl userName">
+                    <li class="userName-li">UserName<span class="iconfont icon-xiangshangjiantou-copy-copy-copy"></span></li>
+                    <div class="user-menu clearfix">
+                        <div>
+                            <img src="./static/images/user-img.png" alt="">
+                        </div>
+                        <p>
+                            <a href="" class="iconfont icon-bianji"><span>Edit</span></a>
+                            <a href="">Logout</a>
+                        </p>
+                    </div>
+                </ul>
+                <ul class="user-info fr">
+                    <li><a href="#">Vendor Background</a></li>
+                    <b>|</b>
+                    <li><a href="#">Open Shop</a></li>
+                    <b>|</b>
+                    <li><a href="#">Buyer Centre</a></li>
+                    <b>|</b>
+                    <li><a href="#">My order</a></li>
+                    <b>|</b>
+                    <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 顶部栏结束 -->
+        <!-- 搜索栏开始 -->
+        <div class="search_bar">
+            <div class="search_bar_content banxin">
+                <div class="logo_box">
+                    <a href="#">
+                        <img src="./static/images/thatsmart-logo.png" alt="">
+                    </a>
+                </div>
+                <div class="search_group">
+                    <i class="iconfont icon-sousuo"></i>
+                    <input type="text" placeholder="Products / Shops">
+                    <button>Search</button>
+                </div>
+                <div class="ad_01">
+                    <a href="#">
+                        <img src="./static/images/ad_01.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 搜索栏结束 -->  
+        
+        <div class="container">
+            <!-- 对联广告开始 -->
+            <div class="couplet couplet-left">
+                <a href="#">
+                    <img src="./static/images/ad1_left.jpg" alt="">
+                </a>
+                <a class="couplet-close couplet-left-close">X</a>
+            </div>
+            <div class="couplet couplet-right">
+                <a href="#">
+                    <img src="./static/images/ad1_right.jpg" alt="">
+                </a>
+                <a class="couplet-close couplet-right-close">X</a>
+            </div>
+            <!-- 对联广告结束 -->
+            
+            <!-- 订单开始 -->
+            <div class="userWrap clearfix orderWrap">
+                <div class="userTitle clearfix">
+                    <a href="#" class="userSelect titleActive">Order List</a>
+                    <a href="">My Cart</a>
+                    <a href="">My Favourite</a>
+                    <a href="./template/reviews.html">Reviews</a>
+                    <a href="./template/refund.html">Refund</a>
+                    <a href="./template/invoice.html">Invoice Info</a>
+                    <a href="">Personal Info</a>
+                    <a href="">shipping Address</a>
+                </div>
+                <div class="userContent userReviews">
+                    <div class="review-select clearfix">
+                        <div>
+                            <span class="reviewActive titleAll cli">All</span>
+                            <i></i>
+                            <span class="titleUnpaid cli">Unpaid</span>
+                            <i></i>
+                            <span class="titlePaid cli">Paid</span>
+                            <i></i>
+                            <span class="titleDeliverd cli">Deliverd</span>
+                            <b class="numberTips">1</b>
+                        </div>
+                        <div>
+                            <div class="search-product">
+                                <input type="text" placeholder="Products / Shops / Order Number">
+                                <button class="iconfont icon-sousuo"></button>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- Start review-product -->
+                    <div class="review-product order-product">
+                        <div class="pro-title">
+                            <p>
+                                <span>Item</span>
+                            </p>
+                            <span>Price</span>
+                            <span>Quantity</span>
+                            <span>Subtotal</span>
+                            <span>Status</span>
+                        </div>
+                        <div class="pro-container closed">
+                            <p>
+                                <img src="./static/images/pro-img.png" alt="">
+                                <a href="" class="iconfont icon-kefu"> <i>Live chat</i></a>
+                                <span>Order number : 2017121245326</span>
+                                <b>The transaction closed</b>
+                            </p>
+                            <div>
+                                <img src="./static/images/user_img06.jpg" alt="">
+                                <p>
+                                    <span>Item title Item title Item title Item title</span>
+                                    <span>Color category : black</span>
+                                    <span>Size : L</span>
+                                </p>
+                                <div>
+                                    <s>¥ 1299</s>
+                                    <span>¥ 999</span>
+                                    <span>1</span>
+                                    <span>¥ 999</span>
+                                    <span class="order-delete">Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-container unpaid">
+                            <p>
+                                <img src="./static/images/pro-img.png" alt="">
+                                <a href="" class="iconfont icon-kefu"> <i>Live chat</i></a>
+                                <span>Order number : 2017121245326</span>
+                                <b>Unpaid</b>
+                            </p>
+                            <div>
+                                <img src="./static/images/user_img06.jpg" alt="">
+                                <p>
+                                    <span>Item title Item title Item title Item title</span>
+                                    <span>Color category : black</span>
+                                    <span>Size : L</span>
+                                </p>
+                                <div>
+                                    <s>¥ 1299</s>
+                                    <span>¥ 999</span>
+                                    <span>1</span>
+                                    <i>Shipping:¥5.00</i>
+                                    <span class="shipping-span">¥ 999</span>
+                                    <a href=""><span>Pay</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-container unpaid">
+                            <p>
+                                <img src="./static/images/pro-img.png" alt="">
+                                <a href="" class="iconfont icon-kefu"> <i>Live chat</i></a>
+                                <span>Order number : 2017121245326</span>
+                                <b>Unpaid</b>
+                            </p>
+                            <div>
+                                <img src="./static/images/user_img06.jpg" alt="">
+                                <p>
+                                    <span>Item title Item title Item title Item title</span>
+                                    <span>Color category : black</span>
+                                    <span>Size : L</span>
+                                </p>
+                                <div>
+                                    <s>¥ 1299</s>
+                                    <span>¥ 999</span>
+                                    <span>1</span>
+                                    <i>Shipping:¥5.00</i>
+                                    <span class="shipping-span">¥ 999</span>
+                                    <a href=""><span>Pay</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-container paid">
+                            <p>
+                                <img src="./static/images/pro-img.png" alt="">
+                                <a href="" class="iconfont icon-kefu"> <i>Live chat</i></a>
+                                <span>Order number : 2017121245326</span>
+                                <b>Paid</b>
+                            </p>
+                            <div>
+                                <img src="./static/images/user_img06.jpg" alt="">
+                                <p>
+                                    <span>Item title Item title Item title Item title</span>
+                                    <span>Color category : black</span>
+                                    <span>Size : L</span>
+                                </p>
+                                <div>
+                                    <s>¥ 1299</s>
+                                    <span>¥ 999</span>
+                                    <span>1</span>
+                                    <span>¥ 999</span>
+                                    <a href=""><span>Details</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-container deliverd">
+                            <p>
+                                <img src="./static/images/pro-img.png" alt="">
+                                <a href="" class="iconfont icon-kefu"> <i>Live chat</i></a>
+                                <span>Order number : 2017121245326</span>
+                                <b>Deliverd</b>
+                            </p>
+                            <div>
+                                <img src="./static/images/user_img06.jpg" alt="">
+                                <p>
+                                    <span>Item title Item title Item title Item title</span>
+                                    <span>Color category : black</span>
+                                    <span>Size : L</span>
+                                </p>
+                                <div>
+                                    <s>¥ 1299</s>
+                                    <span>¥ 999</span>
+                                    <span>1</span>
+                                    <span>¥ 999</span>
+                                    <div>
+                                        <a href=""><span>Details</span></a>
+                                        <a href=""><span>Reviews</span></a> 
+                                    </div>                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End review-product -->                   
+                </div>
+            </div>
+            <!-- 订单结束 -->
+
+            <!-- 推荐商品开始 -->
+            <div class="recommended_products recommended_products2">
+                <div class="recommended_products_content banxin">
+                    <div class="recommended_products_title">
+                        <span>
+                            <i class="iconfont icon-shangpin"></i>
+                            <em>Featured Products</em>
+                        </span>
+                        <a href="#" class="more">More</a>
+                    </div>
+                    <div class="recommended_products_carousel">
+                        <div class="swiper-container shops-container product-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_01.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution123123</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_02.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_03.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                 <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_01.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_02.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_03.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next swiper-button-white"></div>
+                            <div class="swiper-button-prev swiper-button-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 推荐商品结束 -->
+
+            <!-- 底部广告开始 -->
+            <div class="ad ad-banner-bottom">
+                <img src="./static/images/ad-bottom.jpg" alt="">
+            </div>
+            <!-- 底部广告结束 -->
+        </div><!-- End container -->
+     
+        <!-- 底部栏开始 -->
+        <div class="bottom_bar">
+            <div class="bottom_bar_content banxin">
+                <a href="#">
+                    <i class="iconfont icon-thatsMart-final"></i>
+                </a>
+                <span class="copyright">© 2017 SH Aoyang Advertising Co., Ltd. 沪ICP备12038926号-2</span>
+            </div>
+        </div>
+        <!-- 底部栏结束 -->
+    </div>
+    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
+     <script src="./static/node_modules/swiper/dist/js/swiper.min.js"></script>
+    <script src="./api/order.js"></script>
+</body>
+</html>
