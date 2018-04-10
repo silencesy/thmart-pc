@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1",
-    "swiper": "^4.0.7",
-    "vue": "^2.5.13"
+    "axios": "^0.18.0",
+    "vue": "^2.5.13",
+    "vue-lazyload": "^1.2.2",
+    "vue-masonry": "^0.10.17",
+    "vue-waterfall-easy": "^1.0.8"
   }
 }

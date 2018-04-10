@@ -80,6 +80,37 @@ Vue.component('th-footer',{
         +'<!-- 底部栏结束 -->'
 	
 });
+// th导航
+Vue.component('th-banner',{
+	template: `
+		<!-- 导航栏开始 -->
+        <div class="navigation_bar navigation_bar2">
+            <div class="navigation_bar_content banxin">
+                <ul class="navigation_ul">
+                    <li>
+                        <a href="#"><i class="iconfont icon-fenlei"></i>All Categories</a>
+                    </li>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Deals</a>
+                    </li>
+                    <li>
+                        <a href="#">Ticketing</a>
+                    </li>
+                    <li>
+                        <a href="#">Shops</a>
+                    </li>
+                    <li>
+                        <a href="#">Article</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 导航栏结束 -->
+	`
+})
 // th对联
 Vue.component('th-couplet',{
 	template: `
@@ -99,5 +130,12 @@ Vue.component('th-couplet',{
             </div>
             <!-- 对联广告结束 -->
 		</div>
+	`
+});
+Vue.component('th-ad',{
+	template: `
+		<div class="ad ad-banner-top">
+                <img src="./static/images/ad_1000.jpg" alt="">
+        </div>
 	`
 });

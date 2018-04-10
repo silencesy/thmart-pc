@@ -1451,6 +1451,21 @@ animation: infiniterotation 3s linear infinite;
 
 
 /**** 文章详情开始 ****/ 
+.article-class > div {
+	width: 33.333333%;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 20px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.article-class > div.active {
+	color: #f9421e;
+	border-bottom: 1px solid #f9421e;
+}
+
 .article-content .articles {
 	padding: 15px 15px 20px 15px;
 	box-sizing: border-box;
@@ -1495,7 +1510,8 @@ animation: infiniterotation 3s linear infinite;
 }
 .articleProduct {
 	padding-left: 16%;
-	margin: 15px 0;
+	padding-bottom: 15px;
+	background-color: #fff;
 }
 .article-product {
 	background: #f2f2f2;
@@ -1548,6 +1564,7 @@ animation: infiniterotation 3s linear infinite;
 	float: left; 
     width: 31.8%;
     margin-right: 15px;
+    background-color: #ededed;
 }
 .articleList .article-list:last-child {
 	margin-right: 0;

@@ -4,163 +4,93 @@
 <head>
     <meta charset="utf-8">
     <title>Thatsmart</title>
-    <link rel="stylesheet" href="./static/node_modules/swiper/dist/css/swiper.min.css">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_jxnog1n6rbe29.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_xz3b2im75ncm1jor.css">
+    <link rel="stylesheet" href="./static/css/mescroll.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
+     <style>
+        .th-product-box {
+            width: 1000px;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+        .th-product-box:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        .th-product-item {
+            width: 32%;
+            height: auto;
+            margin-bottom: 10px;
+            background-color: #fff;
+            cursor: pointer;
+            
+        }
+
+        .th-product-item:hover {
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+            transition: all .3s linear;
+        }
+
+        .th-product-item img {
+            width: 100%;
+        }
+        .th-product-item p {
+            padding: 20px 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 顶部栏开始 -->
-        <div class="top_bar">
-            <div class="top_bar_content banxin clearfix">
-                <ul class="user_login fl">
-                    <li>
-                        <a href="#">Login</a>
-                    </li>
-                    <b>|</b>
-                    <li>
-                        <a href="#">
-                            Sign up
-                        </a>
-                    </li>
-                </ul>
-                <ul class="user-info fr">
-                    <li><a href="#">Vendor Background</a></li>
-                    <b>|</b>
-                    <li><a href="#">Open Shop</a></li>
-                    <b>|</b>
-                    <li><a href="#">Buyer Centre</a></li>
-                    <b>|</b>
-                    <li><a href="#">My order</a></li>
-                    <b>|</b>
-                    <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- 顶部栏结束 -->
-        <!-- 搜索栏开始 -->
-        <div class="search_bar">
-            <div class="search_bar_content banxin">
-                <div class="logo_box">
-                    <a href="#">
-                        <img src="./static/images/thatsmart-logo.png" alt="">
-                    </a>
-                </div>
-                <div class="search_group">
-                    <i class="iconfont icon-sousuo"></i>
-                    <input type="text" placeholder="Products / Shops">
-                    <button>Search</button>
-                </div>
-                <div class="ad_01">
-                    <a href="#">
-                        <img src="./static/images/ad_01.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- 搜索栏结束 -->
-         <!-- 导航栏开始 -->
-        <div class="navigation_bar navigation_bar2">
-            <div class="navigation_bar_content banxin">
-                <ul class="navigation_ul">
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">All</a>
-                    </li>
-                    <li>
-                        <a href="#">Food & Drink</a>
-                    </li>
-                    <li>
-                        <a href="#">Ticketing</a>
-                    </li>
-                    <li>
-                        <a href="#">Deals</a>
-                    </li>
-                    <li>
-                        <a href="#">Coupons</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- 导航栏结束 -->    
-        
-        <div class="container">
-            <!-- 对联广告开始 -->
-            <div class="couplet couplet-left">
-                <a href="#">
-                    <img src="./static/images/ad1_left.jpg" alt="">
-                </a>
-                <a class="couplet-close couplet-left-close">X</a>
-            </div>
-            <div class="couplet couplet-right">
-                <a href="#">
-                    <img src="./static/images/ad1_right.jpg" alt="">
-                </a>
-                <a class="couplet-close couplet-right-close">X</a>
-            </div>
-            <!-- 对联广告结束 -->        
-            <!-- 广告开始 -->
-            <div class="ad ad-banner-top">
-                <img src="./static/images/ad_1000.jpg" alt="">
-            </div>
-            <!-- 广告结束 -->
-            <!-- 文章列表开始 -->
-            <div class="article-container clearfix">
-                <div class="article-content">
-                    <div class="articleList clearfix">
-                        <div class="article-list bg-f">
-                            <a href="">
-                                <img src="./static/images/article_img01.jpg" alt="">
-                                <div>
-                                    <h4>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</h4>
-                                    <p>The latest installment of this popular storytelling series, in which participants tell an authentic and unscripted story to an audience, focuses on the theme of "All or Nothing."</p>
-                                </div>
-                            </a>
-                        </div> 
-                        <div class="article-list bg-f">
-                            <a href="">
-                                <img src="./static/images/article_img02.jpg" alt="">
-                                <div>
-                                    <h4>WIN: ¥1,500 to Spend at Element Fresh</h4>
-                                    <p>This month we’re giving away a gift voucher for Element Fresh, worth ¥1,500 ...</p>
-                                </div>
-                            </a>
+    <div class="wrapper" id="articleList">
+        <div>
+            <th-header></th-header>    
+            <th-banner></th-banner>
+            <div class="container">
+                <th-ad></th-ad>
+                <!-- 文章列表开始 -->
+                <div class="article-container clearfix">
+                    <div class="article-content">
+                        <div class="article-class">
+                            <div class="fl"  
+                                v-for="(item,index) in tabs" 
+                                :class="{active:index == num}"
+                                 @click="tab(index)">{{item.name}}</div>
                         </div>
-                        <div class="article-list bg-f">
-                            <a href="">
-                                <img src="./static/images/article_img03.jpg" alt="">
-                                <div>
-                                    <h4>4 Perfect Pumpkin Recipes the Whole Family Will Love</h4>
-                                    <p>Pumpkins are one of those squash plants that instantly tell you Autumn has arrived, but there's so much more that you can do with it other than carve jack-o-lanterns. Get creative with these irresistible pumpkin recipes...</p>
-                                </div>
-                            </a>
+                        <div class="articleList clearfix">
+                            <div class="article-list bg-f"
+                                v-for='(itemCon,index) in tabContents' 
+                                v-show="index == num" style="width: 705px;">
+                                    <div class="th-product-item" v-for="item in itemCon">
+                                        <a href="./article-detail.html" >
+                                            <img :src="item.coverpic" alt="">
+                                            <div>
+                                                <h4 v-text="item.article_name"></h4>
+                                                <p v-text="item.create_time"></p>
+                                            </div>
+                                        </a>
+                                    </div >
+                                    
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="article-bar">
-                    <div class="ad ad-bar">
-                        <img src="./static/images/ad-right.jpg" alt="">
+                    <div class="article-bar">
+                        <div class="ad ad-bar">
+                            <img src="./static/images/ad-right.jpg" alt="">
+                        </div>
                     </div>
-                </div>
-            </div>            
-            <!-- 文章列表结束 -->
-        </div>
-     
-        <!-- 底部栏开始 -->
-        <div class="bottom_bar">
-            <div class="bottom_bar_content banxin">
-                <a href="#">
-                    <i class="iconfont icon-thatsMart-final"></i>
-                </a>
-                <span class="copyright">© 2017 SH Aoyang Advertising Co., Ltd. 沪ICP备12038926号-2</span>
+                </div>            
+                <!-- 文章列表结束 -->
             </div>
         </div>
-        <!-- 底部栏结束 -->
     </div>
-    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/node_modules/vue/dist/vue.js"></script>
+    <script src="static/js/mescroll.min.js"></script>
+    <script src="static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="static/js/masonry.min.js"></script>
+    <script src="./components/th-components.js"></script>
+    <script src="./api/common.js"></script>
     <script src="./api/articleList.js"></script>
 </body>
 </html>
