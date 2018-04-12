@@ -4,14 +4,13 @@
 <head>
     <meta charset="utf-8">
     <title>Thatsmart</title>
-    <link rel="stylesheet" href="./static/node_modules/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_rvj6l8b6wxr2uik9.css">
-    <link rel="stylesheet" href="./static/css/pretty.min.css">
+    <link rel="stylesheet" href="static/css/mescroll.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="OlderConfirmation">
 		<!-- 顶部栏开始 -->
         <div class="top_bar">
             <div class="top_bar_content banxin clearfix">
@@ -85,117 +84,65 @@
         </div>
         <!-- 导航栏结束 -->      
         <!-- 订单详情开始 -->
-        <div class="order_details_content banxin">
+        <div class="order_details_content banxin" v-cloak>
             <h4>Older Confirmation</h4>
             <div class="order_address clearfix">
                 <div class="fl order_address_left">
                     <i class="iconfont icon-dizhi2"></i> Send to
                 </div>
                 <div class="fl order_address_right">
-                    <ul class="address_ul">
-                        <li>
-                            <div class="pretty plain toggle">
-                                <input type="radio" name="address" checked="checked" value="1"/> 
-                                <label>
-                                    <i class="iconfont icon-duihao1"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                                <label>
-                                    <i class="iconfont icon-duihao1 theme_color"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="pretty plain toggle">
-                                <input type="radio" name="address" value="2"/> 
-                                <label>
-                                    <i class="iconfont icon-duihao1"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                                <label>
-                                    <i class="iconfont icon-duihao1 theme_color"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="pretty plain toggle">
-                                <input type="radio" name="address" value="3"/> 
-                                <label>
-                                    <i class="iconfont icon-duihao1"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                                <label>
-                                    <i class="iconfont icon-duihao1 theme_color"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="pretty plain toggle">
-                                <input type="radio" name="address" value="4"/> 
-                                <label>
-                                    <i class="iconfont icon-duihao1"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                                <label>
-                                    <i class="iconfont icon-duihao1 theme_color"></i>
-                                    Room 305-306.Building 2,No.169 Mengzi Road,Shanghai （Allen collection）13612343821
-                                </label>
-                            </div>
+                    <div v-if="noAddress">Please add your detailed address.</div>
+                    <ul class="address_ul" :class="{active: autoHeight}">
+                        <li v-for="(item,index) in addressData" @click='getAddrId(item,index)' :class='{active: item.id==active}'>
+                            <p><i class="iconfont icon-duihao1"></i><span v-text="item.region"></span><span v-cloak> ({{item.fullname}}) </span><span v-text="item.phone"></span></p>
+                            <p v-text="item.region_detail" v-show="item.region_detail" style="margin-left: 24px;"></p>
                         </li>
                     </ul>
-                    <p><i class="iconfont icon-xiangshangjiantou-copy-copy-copy show-address"></i><i class="iconfont icon-xiangshangjiantou-copy-copy-copy-copy hide-address"></i></p>
+                    <p v-show="isShow" class="more" style="display: none;" @click="getMore"><i class="iconfont icon-xiangshangjiantou-copy-copy-copy show-address"></i><i class="iconfont icon-xiangshangjiantou-copy-copy-copy-copy hide-address"></i></p>
                 </div>
                 <div class="fl">
-                    <a href="#" class="add_address">Change Address</a>
+                    <a href="#" class="add_address" @click="AddAddress">Add Address</a>
                 </div>
             </div>
             <div class="order_pro_list">
                 <div class="title">
-                    <div class="pretty plain toggle ">
-                        <input class="all-checkbox" type="checkbox" name="address" value="00"/> 
-                        <label class="color_666">
-                            <i class="iconfont icon-duihao1 dim_color"></i>
-                            Select
-                        </label>
-                        <label class="theme_color">
-                            <i class="iconfont icon-duihao1 theme_color"></i>
-                            Select
-                        </label>
-                    </div>
+                    <span class="Older-shopname">Shop Name</span>
                     <span class="commodity">Commodity</span>
                     <span class="price">Price</span>
                     <span class="quantity">Quantity</span>
                     <span class="subtotal">Subtotal</span>
                 </div>
                 <ul class="order_shop_ul">
-                    <li class="shop_li">
+                    <li class="shop_li" v-for="item in merchant">
+                        <div class="shop_name" v-text="item.merchant_name">
+                             
+                        </div>
+                        <ul class="order_pro_ul">
+                            <li class="clearfix" v-for="product in item.list">
+                                <img :src="product.goods_picture" alt="">
+                                <div class="order_pro_info">
+                                    <p v-text="product.goods_name"></p>
+                                    <p v-show="!product.type_name_one==''">{{product.type_name_one}}: <span>{{product.goods_type_one}}</span></p>
+                                    <p v-show="!product.type_name_two==''">{{product.goods_type_two}}: <span>{{product.goods_type_two}}</span></p>
+                                </div>
+                                <div class="order_pro_price">
+                                    <p>￥<span v-text="product.goods_price"></span></p>
+                                </div>
+                                <div class="count" v-text="product.goods_cnt">
+                                    
+                                </div>
+                                <div class="pro_pay_price">
+                                    <p>￥<span>{{product.goods_price*product.goods_cnt}}</span></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- <li class="shop_li">
                         <div class="shop_name">
-                            <div class="pretty plain toggle ">
-                                <input class="shop_check" type="checkbox" name="address" value="0"/> 
-                                <label>
-                                    <i class="iconfont icon-duihao1 dim_color"></i>
-                                    Shop Name 
-                                </label>
-                                <label>
-                                    <i class="iconfont icon-duihao1 theme_color"></i>
-                                    Shop Name 
-                                </label>
-                            </div>
+                            Shop Name 
                         </div>
                         <ul class="order_pro_ul">
                             <li class="clearfix">
-                                <div class="pretty plain toggle ">
-                                    <input type="checkbox" name="address" value="0"/> 
-                                    <label>
-                                        <i class="iconfont icon-duihao1 dim_color"></i> 
-                                    </label>
-                                    <label>
-                                        <i class="iconfont icon-duihao1 theme_color"></i>
-                                    </label>
-                                </div>
                                 <img src="./static/images/prolist_01.jpg" alt="">
                                 <div class="order_pro_info">
                                     <p>Shanghai Restaurant Review: Kun Th aia</p>
@@ -206,26 +153,13 @@
                                     <p>￥<span>7773</span></p>
                                 </div>
                                 <div class="count">
-                                    <div class="sub-add">
-                                        <i class="iconfont icon-icon sub"></i>
-                                        <input type="text" value="1">
-                                        <i class="iconfont icon-jia add"></i>
-                                    </div>
+                                    123
                                 </div>
                                 <div class="pro_pay_price">
                                     <p>￥<span>7773</span></p>
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <div class="pretty plain toggle ">
-                                    <input type="checkbox" name="address" value="0"/> 
-                                    <label>
-                                        <i class="iconfont icon-duihao1 dim_color"></i> 
-                                    </label>
-                                    <label>
-                                        <i class="iconfont icon-duihao1 theme_color"></i>
-                                    </label>
-                                </div>
                                 <img src="./static/images/prolist_01.jpg" alt="">
                                 <div class="order_pro_info">
                                     <p>Shanghai Restaurant Review: Kun Th aia</p>
@@ -236,26 +170,13 @@
                                     <p>￥<span>7773</span></p>
                                 </div>
                                 <div class="count">
-                                    <div class="sub-add">
-                                        <i class="iconfont icon-icon sub"></i>
-                                        <input type="text" value="1">
-                                        <i class="iconfont icon-jia add"></i>
-                                    </div>
+                                    123
                                 </div>
                                 <div class="pro_pay_price">
                                     <p>￥<span>7773</span></p>
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <div class="pretty plain toggle ">
-                                    <input type="checkbox" name="address" value="0"/> 
-                                    <label>
-                                        <i class="iconfont icon-duihao1 dim_color"></i> 
-                                    </label>
-                                    <label>
-                                        <i class="iconfont icon-duihao1 theme_color"></i>
-                                    </label>
-                                </div>
                                 <img src="./static/images/prolist_01.jpg" alt="">
                                 <div class="order_pro_info">
                                     <p>Shanghai Restaurant Review: Kun Th aia</p>
@@ -266,160 +187,28 @@
                                     <p>￥<span>7773</span></p>
                                 </div>
                                 <div class="count">
-                                    <div class="sub-add">
-                                        <i class="iconfont icon-icon sub"></i>
-                                        <input type="text" value="1">
-                                        <i class="iconfont icon-jia add"></i>
-                                    </div>
+                                    123
                                 </div>
                                 <div class="pro_pay_price">
                                     <p>￥<span>7773</span></p>
                                 </div>
                             </li>
                         </ul>
-                    </li>
-                    <li class="shop_li">
-                        <div class="shop_name">
-                            <div class="pretty plain toggle ">
-                                <input class="shop_check" type="checkbox" name="address" value="0"/> 
-                                <label>
-                                    <i class="iconfont icon-duihao1 dim_color"></i>
-                                    Shop Name 
-                                </label>
-                                <label>
-                                    <i class="iconfont icon-duihao1 theme_color"></i>
-                                    Shop Name 
-                                </label>
-                            </div>
-                        </div>
-                        <ul class="order_pro_ul">
-                            <li class="clearfix">
-                                <div class="pretty plain toggle ">
-                                    <input type="checkbox" name="address" value="0"/> 
-                                    <label>
-                                        <i class="iconfont icon-duihao1 dim_color"></i> 
-                                    </label>
-                                    <label>
-                                        <i class="iconfont icon-duihao1 theme_color"></i>
-                                    </label>
-                                </div>
-                                <img src="./static/images/prolist_01.jpg" alt="">
-                                <div class="order_pro_info">
-                                    <p>Shanghai Restaurant Review: Kun Th aia</p>
-                                    <p>Size:<span>20cmx15cm</span></p>
-                                    <p>Color Category : <span>red</span></p>
-                                </div>
-                                <div class="order_pro_price">
-                                    <p>￥<span>7773</span></p>
-                                </div>
-                                <div class="count">
-                                    <div class="sub-add">
-                                        <i class="iconfont icon-icon sub"></i>
-                                        <input type="text" value="1">
-                                        <i class="iconfont icon-jia add"></i>
-                                    </div>
-                                </div>
-                                <div class="pro_pay_price">
-                                    <p>￥<span>7773</span></p>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="pretty plain toggle ">
-                                    <input type="checkbox" name="address" value="0"/> 
-                                    <label>
-                                        <i class="iconfont icon-duihao1 dim_color"></i> 
-                                    </label>
-                                    <label>
-                                        <i class="iconfont icon-duihao1 theme_color"></i>
-                                    </label>
-                                </div>
-                                <img src="./static/images/prolist_01.jpg" alt="">
-                                <div class="order_pro_info">
-                                    <p>Shanghai Restaurant Review: Kun Th aia</p>
-                                    <p>Size:<span>20cmx15cm</span></p>
-                                    <p>Color Category : <span>red</span></p>
-                                </div>
-                                <div class="order_pro_price">
-                                    <p>￥<span>7773</span></p>
-                                </div>
-                                <div class="count">
-                                    <div class="sub-add">
-                                        <i class="iconfont icon-icon sub"></i>
-                                        <input type="text" value="1">
-                                        <i class="iconfont icon-jia add"></i>
-                                    </div>
-                                </div>
-                                <div class="pro_pay_price">
-                                    <p>￥<span>7773</span></p>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="pretty plain toggle ">
-                                    <input type="checkbox" name="address" value="0"/> 
-                                    <label>
-                                        <i class="iconfont icon-duihao1 dim_color"></i> 
-                                    </label>
-                                    <label>
-                                        <i class="iconfont icon-duihao1 theme_color"></i>
-                                    </label>
-                                </div>
-                                <img src="./static/images/prolist_01.jpg" alt="">
-                                <div class="order_pro_info">
-                                    <p>Shanghai Restaurant Review: Kun Th aia</p>
-                                    <p>Size:<span>20cmx15cm</span></p>
-                                    <p>Color Category : <span>red</span></p>
-                                </div>
-                                <div class="order_pro_price">
-                                    <p>￥<span>7773</span></p>
-                                </div>
-                                <div class="count">
-                                    <div class="sub-add">
-                                        <i class="iconfont icon-icon sub"></i>
-                                        <input type="text" value="1">
-                                        <i class="iconfont icon-jia add"></i>
-                                    </div>
-                                </div>
-                                <div class="pro_pay_price">
-                                    <p>￥<span>7773</span></p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="postage_packing">
-                    <span>Postage&Packing:</span><span>￥<em>0.00</em> </span>
-                </div>
-                <div class="invoice_type">
-                    <span>Invoice type : </span>
-                    <div class="pretty plain toggle">
-                        <input type="radio" name="invoice" checked="checked" value="1"/> 
-                        <label>
-                            <i class="iconfont icon-duihao1 dim_color"></i>
-                            personal
-                        </label>
-                        <label>
-                            <i class="iconfont icon-duihao1 theme_color"></i>
-                            personal
-                        </label>
+                    <div class="order-price-right">
+                        <span class="fl" class="theme_color">Total</span><span>￥<em v-text="beforetotal"></em></span>
                     </div>
-                    <div class="pretty plain toggle">
-                        <input type="radio" name="invoice" value="2"/> 
-                        <label>
-                            <i class="iconfont icon-duihao1 dim_color"></i>
-                            enterprise
-                        </label>
-                        <label>
-                            <i class="iconfont icon-duihao1 theme_color"></i>
-                            enterprise
-                        </label>
+                </div>
+                <div class="postage_packing">
+                    <div class="order-price-right">
+                        <span class="fl" v-text="couponName"></span><span>-￥<em v-text="reduceMoney"></em> </span>
                     </div>
                 </div>
                 <div class="invoice_title">
-                    <span>Invoice title: </span>
-                    <span>Allen</span>
-                    <a href="#">modify</a>
-                    <div class="total">
-                        Total: <span class="theme_color">¥ <em>0.00</em></span>
+                    <div class="total order-price-right">
+                        <span class="fl">Final Price</span> <span class="theme_color">¥<em v-text="total"></em></span>
                     </div>
                 </div>
                 <div class="submit_box">
@@ -428,18 +217,44 @@
             </div>
         </div>
         <!-- 订单详情结束 -->      
-        <!-- 底部栏开始 -->
-        <div class="bottom_bar">
-            <div class="bottom_bar_content banxin">
-                <a href="#">
-                    <i class="iconfont icon-thatsMart-final"></i>
-                </a>
-                <span class="copyright">© 2017 SH Aoyang Advertising Co., Ltd. 沪ICP备12038926号-2</span>
+        <th-footer></th-footer>
+        <div>
+            <div class="th-layer" v-show="layer" @click="hideLayer" v-cloak></div>
+            <div class="th-layer-box" v-show="layer" v-cloak>
+                <div class="th-layer-title">
+                    Add a new address
+                </div>
+                <div class="th-layer-content">
+                    <div class="row clearfix">
+                        <label for="name">Name :</label>
+                        <input id="name" type="text" v-model="name" autofocus="autofocus">
+                    </div>
+                    <div class="row clearfix">
+                        <label for="phone">Phone :</label>
+                        <input id="phone" type="text" v-model="phone">
+                    </div>
+                    <div class="row clearfix">
+                        <label for="ChAddress"><em class="theme_color">*</em> Address :</label>
+                        <textarea id="ChAddress" v-model="ChAddress"></textarea>
+                    </div>
+                    <div class="row clearfix">
+                        <label for="EnAddress">Address :</label>
+                        <textarea id="EnAddress" v-model="EnAddress"></textarea>
+                    </div>
+                    <div class="row clearfix save-row">
+                        <span class="save" @click="saveAddAddr">Save</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- 底部栏结束 -->
+        
+
     </div>
-    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/js/mescroll.min.js"></script>
+    <script src="static/node_modules/vue/dist/vue.js"></script>
+    <script src="static/node_modules/vue-lazyload/vue-lazyload.js"></script>
+    <script src="./components/th-components.js"></script>
     <script src="./api/orderDetails.js"></script>
 </body>
 </html>

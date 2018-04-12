@@ -12,6 +12,9 @@
     src: url('../front/lcallig.ttf') format('truetype');
 }
 
+[v-cloak] {
+    display: none;
+}
 
 * {
 	-webkit-tap-highlight-color: transparent;
@@ -1141,11 +1144,14 @@ animation: infiniterotation 3s linear infinite;
 
 /**** 订单详情页开始 ****/ 
 .order_details_content h4 {
-	margin: 18px 0 10px 0;
+	margin: 0px 15px;
+	padding: 10px 0;
+	border-bottom: 1px solid #dfdfdf;
 }
 
 .order_address {
 	margin-bottom: 25px;
+	padding-top: 10px;
 }
 
 .order_address .order_address_left {
@@ -1156,21 +1162,31 @@ animation: infiniterotation 3s linear infinite;
 	width: 710px;
 }
 
-.order_address .order_address_right p {
-	text-align: center;
-}
-.address_ul {
-	height: 58px;
+.order_address .order_address_right .address_ul {
+	height: 56px;
 	overflow: hidden;
-	// position: relative;
+}
+
+.order_address .order_address_right .address_ul.active {
+	height: auto;
+	overflow: visible;
+}
+
+.order_address .order_address_right p .icon-duihao1 {
+	margin-right: 8px;
 }
 
 .address_ul li {
+	color: #666;
 	line-height: 28px;
 }
 
-.address_ul li:not(:first-child){
-	color: #666;
+.address_ul li.active {
+	color: #222;
+}
+
+.address_ul li.active .icon-duihao1 {
+	color: #f9421e;
 }
 
 .add_address {
@@ -1201,7 +1217,7 @@ animation: infiniterotation 3s linear infinite;
 }
 
 .order_pro_list .title .commodity {
-	margin-left: 140px;
+	margin-left: 120px;
 }
 
 .order_pro_list .title .price {
@@ -1213,7 +1229,7 @@ animation: infiniterotation 3s linear infinite;
 }
 
 .order_pro_list .title .subtotal {
-	margin-left: 120px;
+	margin-left: 84px;
 }
 
 .order_shop_ul li .shop_name {
@@ -1224,6 +1240,7 @@ animation: infiniterotation 3s linear infinite;
 
 .order_pro_ul {
 	padding-top: 15px;
+	background-color: #ededed;
 }
 
 .order_pro_ul li {
@@ -1234,6 +1251,7 @@ animation: infiniterotation 3s linear infinite;
 	width: 100px;
 	height: 70px;
 	float: left;
+	margin-left: 15px;
 }
 
 .order_pro_ul li .pretty {
@@ -1243,7 +1261,7 @@ animation: infiniterotation 3s linear infinite;
 
 .order_pro_ul li .order_pro_info {
 	float: left;
-	width: 448px;
+	width: 415px;
 	height: 70px;
 	margin-left: 10px;
 }
@@ -1256,6 +1274,9 @@ animation: infiniterotation 3s linear infinite;
 	color: #222;
 	font-size: 18px;
 	margin-bottom: 7px;
+	overflow: hidden;
+	white-space: nowrap; 
+	text-overflow: ellipsis;
 }
 
 .order_pro_ul .order_pro_info p:nth-child(2),
@@ -1265,6 +1286,7 @@ animation: infiniterotation 3s linear infinite;
 }
 
 .order_pro_ul .order_pro_price {
+	text-align: center;
  	width: 115px;
  	float: left;
  }
@@ -1276,7 +1298,8 @@ animation: infiniterotation 3s linear infinite;
  
 .order_pro_ul .count {
 	float: left;
-	width: 170px;
+    width: 204px;
+    text-align: center;
 }
 
 
@@ -1315,7 +1338,7 @@ animation: infiniterotation 3s linear infinite;
 }
  
 .order_pro_ul .pro_pay_price p {
- 	text-align: right;
+	text-align: center;
  	padding-right: 15px;
  	color: #f9421e;
  }
@@ -1324,6 +1347,12 @@ animation: infiniterotation 3s linear infinite;
 	height: 40px;
 	line-height: 40px;
 	text-align: right;
+}
+
+.order_pro_list .order-price-right {
+	width: 180px;
+	float: right;
+	margin-right: 35px;
 }
 
 .order_pro_list .postage_packing span:nth-child(1) {
@@ -1349,13 +1378,96 @@ animation: infiniterotation 3s linear infinite;
 	color: #666;
 }
 
-.order_pro_list .invoice_title span:nth-child(2) {
-	margin: 0 10px 0 15px;
+// .order_pro_list .invoice_title span:nth-child(2) {
+// 	margin: 0 10px 0 15px;
+// }
+.th-layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.3);
+	z-index: 2;
+}
+
+.th-layer-box {
+	width: 545px;
+	height: 420px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #fff;
+	z-index: 3;
+
+}
+
+.th-layer-box .th-layer-title {
+	font-size: 18px;
+	font-weight: 800;
+	color: #222;
+	padding: 15px;
+	border-bottom: 1px solid #dfdfdf;
+}
+
+
+.th-layer-box .save {
+	display: inline-block;
+	width: 140px;
+	height: 34px;
+	line-height: 34px;
+	background-color: #f9421e;
+	color: #fff;
+	cursor: pointer;
+}
+
+.save-row {
+	text-align: center;
+}
+
+.th-layer-content {
+	padding: 20px 34px;
+}
+
+.th-layer-content .row {
+	margin-bottom: 18px;
+}
+
+.th-layer-content .row input {
+	width: 370px;
+	height: 28px;
+	border: 1px solid #a8a8a8;
+	padding: 0 5px;
+	float: right;
+}
+
+.th-layer-content .row textarea {
+	height: 66px;
+	border: 1px solid #a8a8a8;
+	width: 370px;
+	outline: none;
+	padding: 5px;
+	float: right;
+}
+
+.th-layer-content label {
+	font-size: 16px;
+	color: #222;
+	width: 88px;
+	display: inline-block;
+	float: left;
+}
+
+.order_pro_list {
+	padding: 0 15px;
 }
 
 .order_pro_list .invoice_title .total {
 	float: right;
-	width: 200px;
+	width: 180px;
 	text-align: right;
 }
 
@@ -1378,9 +1490,21 @@ animation: infiniterotation 3s linear infinite;
 /**** 订单详情页结束 ****/
 
 /**** 支付页面开始 ****/
+.order_details_content {
+	background-color: #fff;
+	margin-bottom: 20px;
+}
+
 .order_details_content .pay_details {
 	padding-left: 100px;
 	font-size: 16px;
+}
+
+.order_details_content .order_address_right p {
+	cursor: pointer;
+}
+.order_details_content .more {
+	text-align: center;
 }
 
 .pay_details > .clearfix {
@@ -1470,6 +1594,13 @@ animation: infiniterotation 3s linear infinite;
 	padding: 15px 15px 20px 15px;
 	box-sizing: border-box;
 }
+
+.article-content .articles .sub-navigation {
+	border-bottom: 1px solid #dfdfdf;
+	margin: 0 -15px;
+	padding: 0 15px 15px 15px;
+}
+
 .container {
 	width: 1000px;
 	margin: 0 auto;
@@ -1591,7 +1722,7 @@ animation: infiniterotation 3s linear infinite;
 	width: 100%;
 }
 .article-bar .bar-product {
-	margin: 15px 0;
+	margin-bottom: 15px;
 }
 .bar-product .bar-list {
 	position: relative;
