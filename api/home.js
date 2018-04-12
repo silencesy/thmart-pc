@@ -1,36 +1,47 @@
-$(function() {
-	var bannerSwiper = new Swiper('.banner-container', {
-		autoplay: true,//可选选项，自动滑动
-		loop : true,
-	});
-	console.log(this.homeData);
-	var bannerSwiper = new Swiper('.pick-container', {
-		autoplay: true,//可选选项，自动滑动
-		loop : true,
-		loopFillGroupWithBlank: true,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
+Vue.use(VueAwesomeSwiper);
+new Vue({
+	el: '#home',
+	components: {
+		LocalSwiper: VueAwesomeSwiper.swiper,
+    	LocalSlide: VueAwesomeSwiper.swiperSlide
+	},
+	data: {
+		swiperOptionA: {
+     		pagination: {
+	          	el: '.swiper-pagination',
+	          	clickable :true,
+	        },
+	        navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev'
+	        }
 		},
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-		},
-	});
-
-	var shopSwiper = new Swiper('.shops-container', {
-		slidesPerView: 3,
-		spaceBetween: 15,
-		slidesPerGroup: 1,
-		loop: true,
-		loopFillGroupWithBlank: true,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-		},
-    });
-});
+		homeData: null,
+	},
+	mounted: function () {
+		var self = this;
+		self.$nextTick(function() {
+			self.getHomeData();
+		});
+	},
+    computed: {
+		swiperA() {
+			return this.$refs.awesomeSwiperA.swiper
+		}
+    },
+    methods: {
+    	getHomeData: function () {
+    		var self = this;
+    		axios.post('http://api.mall.thatsmags.com/Api/Public/home')
+			.then(function (response) {
+				self.homeData = response.data;
+				if (response.data.code == 1) {
+					self.homeData = response.data.data;
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+    	}
+    }
+})

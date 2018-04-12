@@ -3,147 +3,96 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"> -->
     <title>Thatsmart</title>
-    <link rel="stylesheet" href="./static/node_modules/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_xz3b2im75ncm1jor.css">
+    <link rel="stylesheet" href="static/node_modules/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="static/css/mescroll.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
+    <style>
+        .swiper-container {
+          height: 340px;
+          width: 100%;
+        }
+
+        .swiper-slide {
+          text-align: center;
+          font-size: 38px;
+          font-weight: 700;
+          background-color: #eee;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          width: 100%;
+          height: 340px;
+          
+        }
+
+        .swiper-slide > div {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide > div > a {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 顶部栏开始 -->
-        <div class="wrapper-top">
-            <div class="container top_bar">
-                <div class="top_bar_content banxin clearfix">
-                    <ul class="user_login fl userName">
-                        <li class="userName-li">UserName<span class="iconfont icon-xiangshangjiantou-copy-copy-copy"></span></li>
-                        <div class="user-menu clearfix">
-                            <div>
-                                <img src="./static/images/user-img.png" alt="">
-                            </div>
-                            <p>
-                                <a href="" class="iconfont icon-bianji"><span>Edit</span></a>
-                                <a href="">Logout</a>
-                            </p>
-                        </div>
-                    </ul>
-                    <ul class="user-info fr">
-                        <li><a href="#">Vendor Background</a></li>
-                        <b>|</b>
-                        <li><a href="#">Open Shop</a></li>
-                        <b>|</b>
-                        <li><a href="#">Buyer Centre</a></li>
-                        <b>|</b>
-                        <li><a href="#">My order</a></li>
-                        <b>|</b>
-                        <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
-                    </ul>
-                </div>
+    <div class="wrapper" id="home" v-if="homeData">
+        <swiper ref="awesomeSwiperA" :options="swiperOptionA">
+            <swiper-slide v-for="item in homeData.figure">
+            <div v-if="item.set_cat_id === '1'">
+                <a href="https://www.baidu.com/">
+                    <div class="carousel-img" :style="{backgroundImage:`url(${item.set_img})`}"></div>
+                </a>
             </div>
-        </div>
-        <!-- 顶部栏结束 -->
-        <!-- 搜索栏开始 -->
-        <div class="wrapper-nav">
-            <div class="container search_bar">
-                <div class="search_bar_content banxin">
-                    <div class="logo_box">
-                        <a href="#">
-                            <img src="./static/images/thatsmart-logo.png" alt="">
-                        </a>
-                    </div>
-                    <div class="search_group">
-                        <i class="iconfont icon-sousuo"></i>
-                        <input type="text" placeholder="Products / Shops">
-                        <button>Search</button>
-                    </div>
-                    <div class="ad_01">
-                        <a href="#">
-                            <img src="./static/images/ad_01.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
+            <div v-else-if="item.set_cat_id === '2'">
+                <a href="http://www.thatsmags.com/">
+                    <div class="carousel-img" :style="{backgroundImage:`url(${item.set_img})`}"></div>
+                </a>
             </div>
-        </div>   
-        <!-- 搜索栏结束 -->  
-        
+            <div v-else-if="item.set_cat_id === '3'">
+                <a :href="item.set_url">
+                    <div class="carousel-img" :style="{backgroundImage:`url(${item.set_img})`}"></div>
+                </a>
+            </div>
+                
+            </swiper-slide>
+            <div class="swiper-pagination"  slot="pagination"></div>
+            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
         <div class="container">
             <div class="home-content">
                 <div class="home-deals">
                     <a href="#">
                         <div class="deals-left">
-                            <img src="static/images/deals-home.jpg" alt="">
+                            <img :src="homeData.deal.image" alt="">
                         </div>
                         <div class="deals-right">
                             <ul>
-                                <li class="deals-list">
+                                <li class="deals-list" v-for="item in homeData.deal.list">
                                     <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
-                                    </div>                                  
-                                </li>
-                                <li class="deals-list">
-                                    <div>
-                                        <div><img src="static/images/ximiannai.jpg" alt=""></div>
-                                        <p>Kindle E-reader</p>
-                                        <p><em>¥ </em>199</p>
+                                        <div><img :src="item.set_img" alt=""></div>
+                                        <p>{{item.goods_name}}</p>
+                                        <p><em>¥ </em>{{item.goods_price}}</p>
                                     </div>                                  
                                 </li>
                             </ul>
@@ -152,45 +101,18 @@
                 </div>
                 <div class="home-editor">
                     <div class="editor-left">
-                        <a href="#"><img src="static/images/editor-home.jpg" alt=""></a>
+                        <a href="#"><img :src="homeData.article.image" alt=""></a>
                     </div>
                     <div class="editor-right">
                         <ul>
-                            <li class="editor-list">
+                            <li class="editor-list" v-for="item in homeData.article.list">
                                 <div class="clearfix">
                                     <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in ShanghaiStarbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
+                                        <img :src="item.set_img" alt="">
+                                        <span>{{item.article_name}}</span>
                                     </a>
                                 </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
-                            </li>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
-                            </li>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
-                            </li>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
+                                <p>{{item.create_time}}</p>
                             </li>
                         </ul>
                     </div>
@@ -276,30 +198,16 @@
                         </div>
                     </a>
                 </div>
-
-
-
-
-
-
-
             </div>
-      </div><!-- End container -->
+        </div><!-- End container -->
           
-        <!-- 底部栏开始 -->
-        <div class="wrapper-bottom">
-            <div class="container">
-                <div class="container-bottom">
-                    <a href="javascript:;" class="iconfont icon-thmart"></a>
-                    <span class="copyright">© 2017 SH Aoyang Advertising Co., Ltd. 沪ICP备12038926号-2</span>
-                </div>
-            </div>
-        </div> 
-        <!-- 底部栏结束 -->
     </div>
-
-    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./static/node_modules/swiper/dist/js/swiper.min.js"></script>
-    <script src="./api/reviews.js"></script>
+    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/node_modules/swiper/dist/js/swiper.min.js"></script>
+    <script src="static/node_modules/vue-awesome-swiper/dist/vue-awesome-swiper.js"></script>
+    <script src="static/node_modules/vue/dist/vue.js"></script>
+    <script src="static/js/mescroll.min.js"></script>
+    <script src="./components/th-components.js"></script>
+    <script src="api/home.js"></script>
 </body>
 </html>
