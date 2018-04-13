@@ -394,7 +394,7 @@ animation: infiniterotation 3s linear infinite;
 
 .navigation_bar_content .navigation_ul li {
 	float: left;
-	width: 164px;
+	width: 135px;
 	text-align: center;
 	line-height: 30px;
 	height: 30px;
@@ -847,12 +847,17 @@ animation: infiniterotation 3s linear infinite;
 	width: 24%;
 }
 .deals-left > img {
-	width: 100%;
+	width: 240px;
+	height: 410px;
+}
+.deals-left > a > img {
+	width: 240px;
+	height: 410px;
 }
 .deals-right {
 	float: left;
 	width: 76%;
-	padding: 15px;
+	padding: 15px 15px 5px 15px;
 	box-sizing: border-box;
 }
 .deals-right > ul {
@@ -864,7 +869,7 @@ animation: infiniterotation 3s linear infinite;
 	text-align: center;
 }
 .deals-right > ul > li:nth-child(-n+5) {
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 .deals-list p {
 	margin-bottom: 5px;
@@ -873,14 +878,15 @@ animation: infiniterotation 3s linear infinite;
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
+	margin-top: 8px;
 }
 .deals-list img {
-	width: 55%;
+	width: 120px;
+	height: 120px;
 }
 .deals-list p:nth-of-type(2) {
 	color: #f9421e;
 }
-
 .home-editor {
 	width: 100%;
 	background: #fff;
@@ -890,6 +896,10 @@ animation: infiniterotation 3s linear infinite;
 .editor-left {
 	float: left;
 	width: 24%;
+}
+.editor-left > a > img {
+	width: 240px;
+	height: 410px;
 }
 .editor-right > ul {
 	overflow: hidden;
@@ -912,11 +922,15 @@ animation: infiniterotation 3s linear infinite;
 }
 .editor-list a {
 	overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 .editor-list img {
 	width: 47%;
 	vertical-align: top;
 	float: left;
+	height: 115px;
 }
 .editor-list span {
 	width: 50%;
@@ -942,12 +956,47 @@ animation: infiniterotation 3s linear infinite;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
+.ticket-list > a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.shop-right .ticket-list:nth-child(-n+5) {
+	margin-bottom: 35px;
+}
+.home-hot > img {
+	margin-bottom: 15px;
+}
+.home-hot ul {
+	margin-right: -50px;
+}
+.home-hot .hot-list {
+	width: 18%;
+	float: left;
+	text-align: center;
+	background: #fff;
+	float: left;
+	margin: 0 14px 15px 0;
+}
+.home-hot .hot-list img {
+	width: 180px;
+	height: 180px;
+}
+.hot-list p:nth-of-type(2) {
+    color: #f9421e;
+    padding: 10px 0;
+}
 
 
-
-
-
-
+.home-hot .hot-name {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-top: 10px;
+    padding: 0 10px;
+}
 
 
 
@@ -1127,7 +1176,6 @@ animation: infiniterotation 3s linear infinite;
 /**** 商户列表页开始 ****/
 .navigation_bar2 {
 	border-bottom: 2px solid #f9421e;
-	margin-bottom: 10px;
 } 
 
 .recommended_products.recommended_products3 {

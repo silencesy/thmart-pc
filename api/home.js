@@ -14,15 +14,52 @@ new Vue({
 	        navigation: {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev'
-	        }
+	        },
+	        loop: true
 		},
 		homeData: null,
+		mescroll: null,
+		page: 0,
+		pageSize: 30,
+		set_position: 12,
+		hotProductData: [],
+		totalPages: null,
+		footerShow: false,
+		allNavigationData: null,
+		allNavigationShow: false,
+
 	},
 	mounted: function () {
 		var self = this;
 		self.$nextTick(function() {
 			self.getHomeData();
 		});
+		self.mescroll = new MeScroll("body", { //id固定"body"
+            down: {
+                isLock: true
+            },
+            up: {
+                auto: true,
+                callback: self.upCallback, //上拉回调
+                isBounce: false,
+                toTop:{
+                    src : "./static/images/goback.png", //默认滚动到1000px显示,可配置offset修改
+                    //html: null, //html标签内容,默认null; 如果同时设置了src,则优先取src
+                    offset : 600
+                },
+                offset: 500,
+                noMoreSize: 5,
+                empty:{ //配置列表无任何数据的提示
+                    warpId:"article-list",
+                    icon : "../res/img/mescroll-empty.png" , 
+                    tip : "亲,暂无相关数据哦~" , 
+                    btntext : "去逛逛 >" , 
+                    btnClick : function() {
+                        alert("点击了去逛逛按钮");
+                    } 
+                },
+            }
+        });
 	},
     computed: {
 		swiperA() {
@@ -32,7 +69,9 @@ new Vue({
     methods: {
     	getHomeData: function () {
     		var self = this;
-    		axios.post('http://api.mall.thatsmags.com/Api/Public/home')
+    		var param = new URLSearchParams();
+			param.append("terminal", "PC");
+    		axios.post('http://proj7.thatsmags.com/Api/Public/home',param)
 			.then(function (response) {
 				self.homeData = response.data;
 				if (response.data.code == 1) {
@@ -42,6 +81,58 @@ new Vue({
 			.catch(function (error) {
 				console.log(error);
 			});
+    	},
+    	upCallback: function () {
+    		console.log(1);
+    		var self = this;
+    		self.page ++;
+            axios.get('http://api.mall.thatsmags.com/Api/Set/getList', {
+                params: {
+                    set_position: self.set_position,
+                    p: self.page,
+                    pageSize: self.pageSize
+                }
+            })
+            .then(function(res){
+            	if (res.data.code == 1) {
+            		self.hotProductData = self.hotProductData.concat(res.data.data.goods);
+            		self.totalPages = res.data.data.totalPages;
+            		console.log(self.totalPages)
+            		self.mescroll.endUpScroll(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2);
+            		if(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2) {
+            			self.footerShow = true;
+            		}
+            	}
+               
+            })
+            .catch(function(err){
+                self.mescroll.endErr();
+                self.mescroll.endUpScroll(true);
+            });
+    		
+    	},
+    	navigationShow: function() {
+    		var self = this;
+    		
+    		if(!self.allNavigationData) {
+    			axios.get('http://api.mall.thatsmags.com/Api/Archive/getGoodsCats')
+	            .then(function(res){
+	            	console.log(res);
+	            	if (res.data.code == 1) {
+	            		self.allNavigationData = res.data.data;
+	            		self.allNavigationShow = true;
+	            	}
+	            })
+	            .catch(function(err){
+	                console.log(err)
+	            });
+    		} else {
+    			self.allNavigationShow = true;
+    		}
+    		
+    	},
+    	navigationHide: function() {
+    		this.allNavigationShow = false;
     	}
     }
 })

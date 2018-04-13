@@ -40,59 +40,39 @@
         .showorhide {
             visibility: visible;
         }
-        .th-product-title {
-            height: 40px;
-            line-height: 40px;
-            padding: 0 15px;
-        }
-        .th-product-Sorting {
-            padding: 0 15px;
-            height: 40px;
-            line-height: 40px;
-            background-color: #fff;
-            margin-bottom: 15px;
-        }
-        .th-product-Sorting span {
-            display: inline-block;
-            height: 100%;
-            padding: 0 28px;
-            float: left;
-            cursor: pointer;
-        }
-        .th-product-Sorting span:nth-child(1) {
-            padding: 0 28px 0 0;
-        }
-        .th-product-Sorting em {
-            display: inline-block;
-            height: 20px;
-            margin-top: 10px;
-            width: 1px;
-            background-color: #bababa;
-            float: left;
+        .banner-img {
+            width: 100%;
+            height: 340px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div class="wrapper" id="productList" v-cloak>
+    <div class="wrapper" id="productList">
         <div>
             <th-header></th-header>
-            <div class="th-product-banner banxin">
-                <div class="th-product-title">home > {{proName}}</div>
-                <div class="th-product-Sorting">
-                    <span class="theme_color">All</span>
-                    <em></em>
-                    <span>Sales<i class="iconfont icon-xiangshang rotate"></i></span>
-                    <em></em>
-                    <span>Price<i class="iconfont icon-xiangshang rotate"></i></span>
-                </div>
-            </div>
+            <div class="banner-img" :style="{backgroundImage:`url(${banner})`}"></div>
             <div class="th-product-box" :class="{ showorhide: isActive }">
-                <div class="th-product-item" v-for="item in listData" >
-                    <img :src="item.coverpic" alt="">
-                    <p v-text="item.goods_name"></p>
+                
+                <div v-if="deal">
+                    <div class="th-product-item" v-for="item in listData">
+                        <img :src="item.set_img" alt="">
+                        <p v-text="item.goods_name"></p>
+                    </div>
+                </div>
+                
+                <div  v-else>
+                    <div class="th-product-item" v-for="item in listData">
+                        <img :src="item.coverpic" alt="">
+                        <p v-text="item.goods_name"></p>
+                    </div>
                 </div>
             </div>
+            <th-footer v-if="footerShow"></th-footer>  
         </div>
     </div>
     <script src="static/node_modules/axios/dist/axios.js"></script>
@@ -103,7 +83,7 @@
     <script src="static/js/masonry.min.js"></script>
     <script src="./components/th-components.js"></script>
     <script src="./api/common.js"></script>
-    <script src="./api/productList.js"></script>
+    <script src="./api/especiallyProductList.js"></script>
 
 </body>
 </html>
