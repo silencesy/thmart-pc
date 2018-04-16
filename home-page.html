@@ -151,7 +151,7 @@
         <div class="navigation_bar navigation_bar2">
             <div class="navigation_bar_content banxin">
                 <ul class="navigation_ul">
-                    <li @mouseover="navigationShow" @mouseleave="navigationHide">
+                    <li @mouseover="navigationShow(true)" @mouseleave="navigationHide">
                         <a href="#"><i class="iconfont icon-fenlei"></i>All Categories</a>
                         <div class="all-navigation-box" v-show="allNavigationShow">
                             <div class="all-navigation">
@@ -260,7 +260,7 @@
                     <div class="deals-right">
                         <ul>
                             <li class="deals-list ticket-list" v-for="item in homeData.ticketing.list">
-                                <a href="#">
+                                <a :href="['./product-details.html?id=']+item.id">
                                     <div><img :src="item.coverpic" alt=""></div>
                                     <p>{{item.goods_name}}</p>
                                     <p><em>¥ </em>{{item.goods_price}}</p>
@@ -278,7 +278,7 @@
                     <div class="deals-right">
                         <ul>
                             <li class="deals-list ticket-list" v-for="item in homeData.feature_products.list">
-                                <a href="#">
+                                <a :href="['./product-details.html?id=']+item.id">
                                     <div><img :src="item.set_img" alt=""></div>
                                     <p>{{item.goods_name}}</p>
                                     <p><em>¥ </em>{{item.goods_price}}</p>
@@ -313,7 +313,7 @@
                     <div class="deals-right">
                         <ul>
                             <li class="deals-list ticket-list" v-for="item in homeData.coupon.list">
-                                <a href="#">
+                                <a :href="['./product-details.html?id=']+item.id">
                                     <div><img :src="item.coverpic" alt=""></div>
                                     <p>{{item.goods_name}}</p>
                                     <p><em>¥ </em>{{item.goods_price}}</p>
@@ -329,7 +329,7 @@
                     <div>
                         <ul class="clearfix">
                            <li class="hot-list" v-for="item in hotProductData">
-                                <a href="#">
+                                <a :href="['./product-details.html?id=']+item.id">
                                     <div><img :src="item.set_img" alt=""></div>
                                     <p class="hot-name">{{item.goods_name}}</p>
                                     <p><em>¥ </em>{{item.goods_price}}</p>

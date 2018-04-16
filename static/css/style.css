@@ -998,7 +998,10 @@ animation: infiniterotation 3s linear infinite;
     padding: 0 10px;
 }
 
-
+.hot-list:hover {
+	box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+    transition: all .3s linear;
+}
 
 
 
@@ -3301,8 +3304,8 @@ animation: infiniterotation 3s linear infinite;
 	float: left;
 }
 .productDetail-left {
-	width: 70%;
-	margin-right: 20px;		
+	width: 100%;
+	// margin-right: 20px;		
 }
 .productDetail-right {
 	width: 28%;	

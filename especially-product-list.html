@@ -58,19 +58,31 @@
             <div class="banner-img" :style="{backgroundImage:`url(${banner})`}"></div>
             <div class="th-product-box" :class="{ showorhide: isActive }">
                 
-                <div v-if="deal">
-                    <div class="th-product-item" v-for="item in listData">
-                        <img :src="item.set_img" alt="">
-                        <p v-text="item.goods_name"></p>
-                    </div>
+                <div v-if="deal" v-for="item in listData">
+                    <a :href="['./product-details.html?id=']+item.id">
+                        <div class="th-product-item" >
+                            <img :src="item.set_img" alt="">
+                            <p v-text="item.goods_name"></p>
+                        </div>
+                    </a>
+                </div>
+                <div v-else v-for="item in listData">
+                    <a :href="['./product-details.html?id=']+item.id">
+                        <div class="th-product-item" >
+                            <img :src="item.coverpic" alt="">
+                            <p v-text="item.goods_name"></p>
+                        </div>
+                    </a>
                 </div>
                 
-                <div  v-else>
-                    <div class="th-product-item" v-for="item in listData">
-                        <img :src="item.coverpic" alt="">
-                        <p v-text="item.goods_name"></p>
-                    </div>
-                </div>
+                <!-- <div v-else >
+                    <a href="#">
+                        <div class="th-product-item" v-for="item in listData">
+                            <img :src="item.coverpic" alt="">
+                            <p v-text="item.goods_name"></p>
+                        </div>
+                    </a>
+                </div> -->
             </div>
             <th-footer v-if="footerShow"></th-footer>  
         </div>

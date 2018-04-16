@@ -33,6 +33,7 @@ new Vue({
 		var self = this;
 		self.$nextTick(function() {
 			self.getHomeData();
+            self.navigationShow(false);
 		});
 		self.mescroll = new MeScroll("body", { //id固定"body"
             down: {
@@ -111,7 +112,7 @@ new Vue({
             });
     		
     	},
-    	navigationShow: function() {
+    	navigationShow: function(data) {
     		var self = this;
     		
     		if(!self.allNavigationData) {
@@ -120,7 +121,7 @@ new Vue({
 	            	console.log(res);
 	            	if (res.data.code == 1) {
 	            		self.allNavigationData = res.data.data;
-	            		self.allNavigationShow = true;
+	            		self.allNavigationShow = data;
 	            	}
 	            })
 	            .catch(function(err){
