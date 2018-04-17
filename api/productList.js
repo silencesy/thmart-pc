@@ -6,12 +6,13 @@ new Vue({
 		pageSize: 16,
 		listData: [],
 		totalPages: 0,
-		catId: 0,
+		catId: null,
 		align: 'center',
         msnry: null,
         grid: null,
         flag: 0,
-        isActive: false
+        isActive: false,
+        proName: null
 
 	},
 	components: {
@@ -50,8 +51,9 @@ new Vue({
 	methods: {
 		upCallback: function() {
 			var self = this;
+            self.catId = self.getUrlParameter("id");
 			self.page ++;
-            axios.get('http://api.mall.thatsmags.com/Api/Archive/getList', {
+            axios.get('http://proj7.thatsmags.com/Api/Archive/getList', {
                 params: {
                     cat_id: self.catId,
                     p: self.page,
@@ -59,13 +61,14 @@ new Vue({
                 }
             })
             .then(function(res){
-                console.log(res.data.data);
+                console.log(res.data);
                 if (res.data.code==1) {
                     self.flag++;
                     var i;
                     for (i in res.data.data.goods) { 
                         self.listData.push(res.data.data.goods[i]);
                     }
+                    self.proName = res.data.data.cat_name;
                     // console.log(self.msnry.masonry());
                     self.mescroll.endUpScroll(self.page == res.data.data.totalPages);
                     // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);

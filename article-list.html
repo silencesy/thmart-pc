@@ -62,7 +62,7 @@
                                 v-for='(itemCon,index) in tabContents' 
                                 v-show="index == num" style="width: 705px;">
                                     <div class="th-product-item" v-for="item in itemCon">
-                                        <a href="./article-detail.html" >
+                                        <a :href="['./article-detail.html?id='+item.id]" >
                                             <img :src="item.coverpic" alt="">
                                             <div>
                                                 <h4 v-text="item.article_name"></h4>

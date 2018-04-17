@@ -3,13 +3,18 @@ new Vue({
 	data: {
 		mescroll: null,
 		articleId: 0,
-		articleDtailData: '',
-		articleList: ''
+		articleDtailData: null,
 	},
 	mounted: function () {
 		var self = this;
 		self.$nextTick(function() {
-			self.articleId = sessionStorage.getItem("articleId") || 2;
+			self.getData();
+		});
+	},
+	methods: {
+		getData: function () {
+			var self = this;
+			
 	        self.mescroll = new MeScroll("body", { //id固定"body"
 	            down: {
 	                isLock: true
@@ -36,18 +41,16 @@ new Vue({
 	                },
 	            }
 	        });
-		});
-	},
-	methods: {
+		},
 		upCallback: function () {
 			var self = this;
+			self.articleId = self.getUrlParameter("id");
 			var param = new URLSearchParams();
-			param.append("id", 2);
-			axios.post('http://api.mall.thatsmags.com/Api/Article/getDetail',param)
+			param.append("id", self.articleId);
+			axios.post('http://proj7.thatsmags.com/Api/Article/getDetail',param)
 			.then(function (response) {
 				if (response.data.code == 1) {
-					self.articleDtailData = response.data.data.article;
-					self.articleList = response.data.data.list;
+					self.articleDtailData = response.data.data;
 					self.mescroll.endUpScroll(true);
 				} else {
 					console.log(error);
@@ -59,52 +62,5 @@ new Vue({
 		}
 	}
 });
-
-// $(function(){
-// 	$(".icon-shoucang1").click(function(){
-//   		$(this).toggleClass("product-shoucang");
-// 	});
-
-// 	// 关闭对联广告
-// 	$('.couplet-close').on('click',function(){
-// 		$(this).parents('.couplet').hide();
-// 	});
-
-// 	CoupletPositionLeft();
-// 	CoupletPositionRight();
-// 	$(window).resize(function(event) {
-// 		CoupletPositionLeft();
-// 		CoupletPositionRight();
-		
-// 	});
-// 	// 广告位随着屏幕的改变而改变
-// 	function CoupletPositionLeft(){
-// 		if ($('.couplet-left')) {
-// 			$isShow = $('.wrapper>.container').offset().left-$('.couplet-left').width();
-// 			if ($isShow>0) {
-// 				$('.couplet-left').css({"display":"block","left":$isShow});
-// 			} else if($isShow>-20) {
-// 				$('.couplet-left').css({"display":"block","left":$isShow+Number(20)});
-// 			} 
-// 			else {
-// 				$('.couplet-left').css({"display":"none"});
-// 			}
-// 		}
-// 	}
-// 	function CoupletPositionRight(){
-// 		if ($('.couplet-right')) {
-// 			$isShow = $('.wrapper>.container').offset().left-$('.couplet-left').width();
-// 			$rightIsShow = $('.wrapper>.container').offset().left+1000;
-			
-// 			if ($isShow>0) {
-// 				$('.couplet-right').css({"display":"block","right":$isShow});
-// 			} else if($isShow>-20) {
-// 				$('.couplet-right').css({"display":"block","right":$isShow+Number(20)});
-// 			} 
-// 			else {
-// 				$('.couplet-right').css({"display":"none"});
-// 			}
-// 		}
-// 	}
 
 // });
