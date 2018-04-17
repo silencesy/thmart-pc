@@ -187,7 +187,7 @@
             </div>
         </div>
         <swiper ref="awesomeSwiperA" :options="swiperOptionA">
-            <swiper-slide v-for="item in homeData.figure">
+            <swiper-slide v-for="item in homeData.figure" :key="item.id">
             <div v-if="item.set_cat_id === '1'">
                 <a href="https://www.baidu.com/">
                     <div class="carousel-img" :style="{backgroundImage:`url(${item.set_img})`}"></div>
@@ -238,42 +238,6 @@
                     </div>
                     <div class="editor-right">
                         <ul>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in ShanghaiStarbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start</p>
-                            </li>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
-                            </li>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
-                            </li>
-                            <li class="editor-list">
-                                <div class="clearfix">
-                                    <a href="#">
-                                        <img src="static/images/article_right02.jpg" alt="">
-                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
-                                    </a>
-                                </div>
-                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
-                            </li>
                             <li class="editor-list" v-for="item in homeData.article.list">
                                 <a :href="['./article-detail.html?id='+item.set_id]">
                                     <div class="clearfix">
@@ -376,15 +340,15 @@
                 <!-- hotProduct End -->
             </div>
         </div><!-- End container -->
-        <!-- <th-footer v-if="footerShow"></th-footer> -->
-        <div class="wrapper-bottom" id="th-footer" v-if="footerShow">
+        <th-footer v-if="footerShow"></th-footer>
+        <!-- <div class="wrapper-bottom" id="th-footer" v-if="footerShow">
             <div class="container">
                 <div class="container-bottom">
                     <a href="javascript:;" class="iconfont icon-thmart"></a>
                     <span class="copyright">© 2017 SH Aoyang Advertising Co., Ltd. 沪ICP备12038926号-2</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script src="static/js/ajax.js"></script>

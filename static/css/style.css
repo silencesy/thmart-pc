@@ -874,7 +874,7 @@ button, input, select, textarea {
     display: block;
 }
 .topline {
-    padding: 20px 0 !important;
+    padding: 20px !important;
 }
 .topline > p {
     float: left;

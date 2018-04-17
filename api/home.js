@@ -22,7 +22,7 @@ new Vue({
 		mescroll: null,
         // 上拉加载
 		page: 0,
-		pageSize: 10,
+		pageSize: 4,
 		set_position: 12,
 		hotProductData: [],
 		totalPages: null,
@@ -121,7 +121,7 @@ new Vue({
                         self.hotProductData = self.hotProductData.concat(response.data.goods);
                         self.totalPages = response.data.totalPages;
                         self.mescroll.endUpScroll(self.totalPages == self.page || self.totalPages==0 || self.page==2);
-                        if(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2) {
+                        if(self.totalPages == self.page || self.totalPages==0 || self.page==2) {
                             self.footerShow = true;
                         }
                     }
