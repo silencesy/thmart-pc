@@ -13,7 +13,6 @@
           height: 340px;
           width: 100%;
         }
-
         .swiper-slide {
           text-align: center;
           font-size: 38px;
@@ -89,64 +88,64 @@
     <div class="wrapper" id="home" v-if="homeData" v-cloak>
         <div id="th-header">
             <!-- 顶部栏开始 -->
-            <div class="wrapper-top">
-                <div class="container top_bar">
-                    <div class="top_bar_content banxin clearfix">
-                        <ul class="user_login fl userName">
-                            <li class="userName-li">UserName<span class="iconfont icon-xiangshangjiantou-copy-copy-copy"></span></li>
-                            <div class="user-menu clearfix">
-                                <div>
-                                    <img src="./static/images/user-img.png" alt="">
-                                </div>
-                                <p>
-                                    <a href="" class="iconfont icon-bianji"><span>Edit</span></a>
-                                    <a href="">Logout</a>
-                                </p>
-                            </div>
-                        </ul>
-                        <ul class="user-info fr">
-                            <li><a href="#">Vendor Background</a></li>
-                            <b>|</b>
-                            <li><a href="#">Open Shop</a></li>
-                            <b>|</b>
-                            <li><a href="#">Buyer Centre</a></li>
-                            <b>|</b>
-                            <li><a href="#">My order</a></li>
-                            <b>|</b>
-                            <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
-                        </ul>
-                    </div>
+            <div class="container top_bar">
+                <div class="top_bar_content banxin clearfix">
+                    <ul class="user_login fl userName">
+                        <li><a href="#">Login</a></li>
+                        <b>|</b>
+                        <li><a href="#">Sign Up</a></li>
+                    </ul>
+                    <ul class="user-info fr">
+                        <li><a href="#">Vendor Background</a></li>
+                        <b>|</b>
+                        <li><a href="#">Open Shop</a></li>
+                        <b>|</b>
+                        <li><a href="#">Buyer Centre</a></li>
+                        <b>|</b>
+                        <li><a href="#">My order</a></li>
+                        <b>|</b>
+                        <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
+                    </ul>
                 </div>
             </div>
             <!-- 顶部栏结束 -->
-            <!-- 搜索栏开始 -->
-            <div class="search_bar">
-                <div class="search_bar_content banxin">
-                    <div class="logo_box shop_logo_box">
-                        <a href="#">
-                            <img src="./static/images/thatsmart-logo.png" alt="">
-                        </a>
-                    </div>
-                    <div class="shop_info_box">
-                        <div class="shop_info">
-                            <!-- <span class="line fl"></span> -->
-                            <div class="shop_text fl">
-                                <p>Shops name name name</p>
-                                <p>
-                                    <span><i class="iconfont icon-kefu"></i>Live</span>
-                                    <span><i class="iconfont icon-shoucang"></i>Favourite</span>
-                                </p>
-                            </div>
+            <div class="topline container clearfix">
+                <p>
+                    <a href="#">
+                        <img src="static/images/thmart.png" alt="">
+                    </a>
+                </p>
+                <!-- 搜索框开始 -->
+                <form id="search-form">
+                    <div class="search-group">
+                        <div class="dropdown">
+                            <button id="dLabel" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="navsearchmodule">All</span>
+                                <i class="iconfont icon-xiangshangjiantou-copy-copy-copy"></i>
+                            </button>
+                            <input type="hidden" name="type" id="search-type" value="Hotel">
+                            
+                            <ul id="search-module-list" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Products</a></li>
+                                <li><a href="#">Shops</a></li>
+                                <li><a href="#">Ticketing</a></li>
+                                <li><a href="#">Coupons</a></li>
+                            </ul>
+                        </div>
+                        <div class="search-pad">
+                            <input name="keywords" class="search" type="search" value="">
+                            <button type="submit" class="top-search">
+                                <span class="">Search</span>
+                            </button>
                         </div>
                     </div>
-                    <div class="search_group shop_search_group">
-                        <i class="iconfont icon-sousuo"></i>
-                        <input type="text" placeholder="Products / Shops">
-                        <button>Search</button>
-                    </div>
+                </form>
+                <!-- 搜索框结束 -->
+                <div class="top-ad">
+                    <a href="#"><img src="static/images/ad_top.jpg" alt=""></a>
                 </div>
             </div>
-            <!-- 搜索栏结束 -->
         </div>
         <div class="navigation_bar navigation_bar2">
             <div class="navigation_bar_content banxin">
@@ -239,6 +238,42 @@
                     </div>
                     <div class="editor-right">
                         <ul>
+                            <li class="editor-list">
+                                <div class="clearfix">
+                                    <a href="#">
+                                        <img src="static/images/article_right02.jpg" alt="">
+                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in ShanghaiStarbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
+                                    </a>
+                                </div>
+                                <p>Get a jump-start</p>
+                            </li>
+                            <li class="editor-list">
+                                <div class="clearfix">
+                                    <a href="#">
+                                        <img src="static/images/article_right02.jpg" alt="">
+                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
+                                    </a>
+                                </div>
+                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
+                            </li>
+                            <li class="editor-list">
+                                <div class="clearfix">
+                                    <a href="#">
+                                        <img src="static/images/article_right02.jpg" alt="">
+                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
+                                    </a>
+                                </div>
+                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
+                            </li>
+                            <li class="editor-list">
+                                <div class="clearfix">
+                                    <a href="#">
+                                        <img src="static/images/article_right02.jpg" alt="">
+                                        <span>Starbucks to Open 'Willy Wonka' Reserve Roastery in Shanghai</span>
+                                    </a>
+                                </div>
+                                <p>Get a jump-start on your grocery shopping this week with this unbeatable Kate & Kimi offer.</p>
+                            </li>
                             <li class="editor-list" v-for="item in homeData.article.list">
                                 <a :href="['./article-detail.html?id='+item.set_id]">
                                     <div class="clearfix">
@@ -351,6 +386,7 @@
             </div>
         </div>
     </div>
+
     <script src="static/js/ajax.js"></script>
     <script src="static/node_modules/swiper/dist/js/swiper.min.js"></script>
     <script src="static/node_modules/vue-awesome-swiper/dist/vue-awesome-swiper.js"></script>
@@ -361,5 +397,6 @@
     <script src="./components/th-components.js"></script>
     <script src="./api/common.js"></script>
     <script src="api/home.js"></script>
+    <script src="api/home-search.js"></script>
 </body>
 </html>

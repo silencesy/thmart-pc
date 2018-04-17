@@ -330,7 +330,7 @@ animation: infiniterotation 3s linear infinite;
 }
 
 .search_bar .search_bar_content .search_group {
-	width: 500px;
+	width: 430px;
 	height: 110px;
 	position: relative;
 	height: 110px;
@@ -341,7 +341,7 @@ animation: infiniterotation 3s linear infinite;
 
 .search_bar_content .search_group input {
 	height: 38px;
-	width: 450px;
+	width: 405px;
 	border: 1px solid #dfdfdf;
 	border-radius: 30px;
 	padding-left: 50px;
@@ -359,10 +359,10 @@ animation: infiniterotation 3s linear infinite;
 	position: absolute;
 	height: 40px;
 	width: 90px;
-	right: -1px;
+	right: -30px;
 	top: 35px;
-	border-top-right-radius: 28px;
-	border-bottom-right-radius: 28px;
+	// border-top-right-radius: 28px;
+	// border-bottom-right-radius: 28px;
 	background-color: #f9421e;
 	color: #fff;
 	cursor: pointer;
@@ -829,6 +829,154 @@ animation: infiniterotation 3s linear infinite;
 /**** 首页结束 ****/ 
 
 /**** 首页开始 ****/ 
+
+/*搜索开始*/
+.topline .dropup {
+    position: relative;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.topline .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.topline .dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+.topline .open>.dropdown-menu {
+    display: block;
+}
+.topline {
+    padding: 20px 0 !important;
+}
+.topline > p {
+    float: left;
+    padding-right: 105px;
+}
+.topline > p img {
+	height: 70px;
+}
+.top-ad {
+	float: right;
+}
+#search-form {
+    padding: 0;
+    float: left;
+    width: 450px;
+    margin-top: 14px;
+    position: relative;
+}
+#search-form input {
+    width: 270px;
+    background-color: transparent;
+    padding-left: 15px;
+    float: left;
+    margin-top: 1px;
+}
+#search-form .top-search {
+    position: absolute;
+    right: -3px;
+    background-color: transparent;
+    border-bottom-right-radius: 19px;
+    border-top-right-radius: 19px;
+    background: #f9421e;
+    color: #fff;
+    padding: 0 20px;
+}
+.search-group {
+    margin: 0;
+    border-width: 0;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+#navsearchmodule, .navsearchmodule {
+    display: inline-block;
+    color: #666;
+    font-weight: 500;
+    font-size: 14px;
+    width: 50px;
+    vertical-align: top;
+}
+.dropdown-toggle .icon-35_xiangxiajiantou {
+    font-size: 16px;
+    vertical-align: middle;
+    color: #666;
+    position: relative;
+    top: 0;
+    left: 5px;
+}
+#dLabel {
+    margin-bottom: 1px;
+    background: none;
+    padding-left: 10px;
+    width: 83px;
+}
+#search-module-list li {
+    padding: 2px 10px;
+}
+.search-group .search-pad {
+    position: absolute;
+    top: 1px;
+    right: 4px;
+    left: 83px;
+}
+.search-pad .search {
+    padding: 0;
+    width: 180px;
+    height: 40px;
+}
+.search-group input[type="search"] {
+    background: none;
+    border: none;
+    display: block;
+}
+.search-group .icon-search {
+    border: 0 none;
+    color: #f87421;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    background: none;
+}
+.search-group .dropdown.open a {
+    background: rgba(0,0,0,0);
+    color: #666;
+}
+
+/*搜索结束*/
+
+
 .home-content {
 	width: 100%;
 }
@@ -955,6 +1103,7 @@ animation: infiniterotation 3s linear infinite;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+	height: 48px;
 }
 .ticket-list > a {
 	display: block;
@@ -986,8 +1135,6 @@ animation: infiniterotation 3s linear infinite;
     color: #f9421e;
     padding: 10px 0;
 }
-
-
 .home-hot .hot-name {
 	overflow: hidden;
     text-overflow: ellipsis;
@@ -1004,48 +1151,26 @@ animation: infiniterotation 3s linear infinite;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**** 首页结束 ****/ 
 
 
 /**** 商户首页首页结束 ****/
+.shop-btn {
+	float: right;
+	margin-top: 35px;
+}
+.shop-btn button {
+	padding: 5px 15px;
+	background-color: #000;
+    color: #fff;
+    height: 40px;
+}
 .search_bar .search_bar_content .logo_box.shop_logo_box {
 	width: 141px;
 }
 
 .search_bar .shop_info_box {
-	width: 348px;
+	width: 320px;
 	height: 110px;
 	float: left;
 }
@@ -1512,9 +1637,6 @@ animation: infiniterotation 3s linear infinite;
     width: 204px;
     text-align: center;
 }
-
-
-
 .sub-add i {
 	font-size: 25px;
 	float: left;
