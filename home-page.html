@@ -342,7 +342,7 @@
             </div>
         </div><!-- End container -->
         <!-- <th-footer v-if="footerShow"></th-footer> -->
-        <div class="wrapper-bottom" id="th-footer">
+        <div class="wrapper-bottom" id="th-footer" v-if="footerShow">
             <div class="container">
                 <div class="container-bottom">
                     <a href="javascript:;" class="iconfont icon-thmart"></a>
@@ -351,13 +351,15 @@
             </div>
         </div>
     </div>
-    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/js/ajax.js"></script>
     <script src="static/node_modules/swiper/dist/js/swiper.min.js"></script>
     <script src="static/node_modules/vue-awesome-swiper/dist/vue-awesome-swiper.js"></script>
-    <script src="static/node_modules/vue-lazyload/src/index.js"></script>
+    <!-- <script src="static/node_modules/vue-lazyload/src/index.js"></script> -->
+
     <script src="static/node_modules/vue/dist/vue.js"></script>
     <script src="static/js/mescroll.min.js"></script>
     <script src="./components/th-components.js"></script>
+    <script src="./api/common.js"></script>
     <script src="api/home.js"></script>
 </body>
 </html>

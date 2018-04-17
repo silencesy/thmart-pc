@@ -12,8 +12,18 @@ new Vue({
         grid: null,
         flag: 0,
         isActive: false,
-        proName: null
-
+        proName: null,
+        titleList: [{
+            name: "All",
+            sort: null
+        },{
+            name: "Sales",
+            sort: 3
+        },{
+            name: "Sales",
+            sort: 2
+        }],
+        sort: null
 	},
 	components: {
 		
@@ -57,7 +67,8 @@ new Vue({
                 params: {
                     cat_id: self.catId,
                     p: self.page,
-                    pageSize: self.pageSize
+                    pageSize: self.pageSize,
+                    sort: self.sort
                 }
             })
             .then(function(res){

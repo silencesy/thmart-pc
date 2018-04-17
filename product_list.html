@@ -78,7 +78,7 @@
         <div>
             <th-header></th-header>
             <div class="th-product-banner banxin">
-                <div class="th-product-title">home > {{proName}}</div>
+                <div class="th-product-title"><a href="./home-page.html">home</a> > {{proName}}</div>
                 <div class="th-product-Sorting">
                     <span class="theme_color">All</span>
                     <em></em>
@@ -89,8 +89,11 @@
             </div>
             <div class="th-product-box" :class="{ showorhide: isActive }">
                 <div class="th-product-item" v-for="item in listData" >
-                    <img :src="item.coverpic" alt="">
-                    <p v-text="item.goods_name"></p>
+                    <a :href="['./product-details.html?id=']+item.id">
+                        <img :src="item.coverpic" alt="">
+                        <p v-text="item.goods_name"></p>
+                    </a>
+                    
                 </div>
             </div>
         </div>
