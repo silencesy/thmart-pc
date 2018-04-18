@@ -6,3 +6,4 @@ Vue.prototype.getUrlParameter = function (name){
     }
         return null;
 }
+Vue.prototype.http = $;

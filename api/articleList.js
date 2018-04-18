@@ -3,13 +3,14 @@ new Vue({
 	data: {
 		articleListData: null,
 		mescroll: null,
-		catId: 1,
+		catId: null,
 		page: 0,
 		pageSize: 9,
 		listData: [],
 		totalPages: 0,
         tabs: [],
         tabContents: [],
+        banner: null,
         num: 0,
         flag: 0
 	},
@@ -29,9 +30,10 @@ new Vue({
                 }
             })
             .then(function(res){
-            	// console.log(res)
+            	console.log(res)
                 if (res.data.code==1) {
                     self.tabs = res.data.data.cat;
+                    self.banner = res.data.data.banner;
                     self.totalPages = res.data.data.totalPages;
                     if (self.tabContents.length == 0 && self.flag == 0) {
                         self.flag ++;
@@ -62,7 +64,7 @@ new Vue({
                 self.mescroll.destroy();
                 self.page = 0;
                 self.num = index;
-                self.catId = index + 1;    
+                self.catId = index;    
                 self.tabContents[self.num]= [];
                 self.loading();
             }

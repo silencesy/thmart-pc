@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_xz3b2im75ncm1jor.css">
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/magnifier.css">
+    <link rel="stylesheet" href="./static/css/mescroll.min.css">
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="productDetails" v-cloak v-if="productData">
         <div class="container">
             <!-- 商品详情开始 -->
             <div class="productDetails-all clearfix">
@@ -20,25 +21,17 @@
                             <div class="preview-box">
                                 <!-- 大图begin -->
                                 <div id="preview" class="spec-preview"> 
-                                  <span class="jqzoom"><img jqimg="./static/images/b1.jpg" src="./static/images/s1.jpg" /></span> 
+                                  <span class="jqzoom"><img jqimg="productData.figure[0]" :src="productData.figure[0]" /></span> 
                                 </div>
                                 <!-- 大图end -->
                                 <!-- 缩略图begin -->
-                                <div class="spec-scroll"> <a class="prev">&lt;</a> <a class="next">&gt;</a>
+                                <div class="spec-scroll">
                                     <div class="items">
                                         <ul>
-                                            <li><img bimg="./static/images/b1.jpg" src="./static/images/s1.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b2.jpg" src="./static/images/s2.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b3.jpg" src="./static/images/s3.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b1.jpg" src="./static/images/s1.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b3.jpg" src="./static/images/s3.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b1.jpg" src="./static/images/s1.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b2.jpg" src="./static/images/s2.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b1.jpg" src="./static/images/s1.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b2.jpg" src="./static/images/s2.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b2.jpg" src="./static/images/s2.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b1.jpg" src="./static/images/s1.jpg" onmousemove="preview(this);"></li>
-                                            <li><img bimg="./static/images/b2.jpg" src="./static/images/s2.jpg" onmousemove="preview(this);"></li>
+                                            <li @mouseover="mouseOverColor" v-for="item in productData.figure">
+                                                <!-- <p>{{item}}</p> -->
+                                                <img bimg="./static/images/b1.jpg" :src="item" onmousemove="preview(this);">
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -47,72 +40,44 @@
                         </div>
 
                         <div class="product-details-r">
-                            <h4>Ted Baker Women's 'KATE' Quartz Stainless Steel and Leather Casual Watch</h4>
+                            <h4>{{productData.goods_name}}</h4>
                             <p>
-                                <span><em>¥</em>34999</span>
-                                <del><em>¥</em>35999</del>
-                                <span><em>Sales volume:</em>299999</span>
+                                <span><em>¥</em>{{productData.price.goods_price}}</span>
+                                <!-- <del><em>¥</em>35999</del> -->
+                                <!-- <span><em>Sales volume:</em>299999</span> -->
                             </p>
                             <ul>
-                                <li class="product-info-r">
-                                    <span>Size</span>
+                                <li class="product-info-r" v-if="productData.type_name_one">
+                                    <span>{{productData.type_name_one}}</span>
                                     <ul class="clearfix size-f">
-                                       <li> 
-                                           <a href="javascript:;">
-                                               <span>M</span>
-                                           </a>
+                                       <li :class="{active: active==index}" v-for="(item,index) in productData.goods_type_one" @click="clickActiveOne(index,item)"> 
+                                            <span>{{item}}</span>
                                        </li> 
-                                       <li>              
-                                           <a href="javascript:;">
-                                               <span>L</span>
-                                           </a>
-                                       </li> 
-                                       <li>        
-                                           <a href="javascript:;">
-                                               <span>XL</span>
-                                           </a>
-                                       </li>                                          
+                                                                                
                                     </ul>
                                 </li>
-                                <li class="product-info-r">
-                                    <span>Color</span>
+                                <li class="product-info-r" v-if="productData.type_name_two">
+                                    <span>{{productData.type_name_two}}</span>
                                     <ul class="clearfix color-f">
-                                       <li>                                 
-                                           <a href="javascript:;">
-                                               <span>Gray</span>
-                                           </a>
-                                       </li> 
-                                       <li>                                           
-                                           <a href="javascript:;">
-                                               <span>Green</span>
-                                           </a>
-                                       </li> 
-                                       <li>                                           
-                                           <a href="javascript:;">
-                                               <span>Red</span>
-                                           </a>
-                                       </li>  
-                                       <li>                                           
-                                           <a href="javascript:;">
-                                               <span>Blue</span>
-                                           </a>
-                                       </li>                                        
+                                       <li :class="{active: active2==index}" v-for="(item,index) in productData.goods_type_two" @click="clickActiveTwo(index,item)">                                 
+                                            <span>{{item}}</span>
+                                       </li>                                       
                                     </ul>                                     
                                 </li>
                                 <li class="product-info-r">
                                     <span>Quantity</span>
                                     <ul class="clearfix Quantity-f">
                                        <span class="jia-jian">
-                                            <i href="javascript:;" class="minus">－</i>
-                                            <input type="text" value="1" class="num" readonly="readonly">
-                                            <i href="javascript:;" class="plus">＋</i>
+                                            <i :class="{minus:countColor}" @click="minus">－</i>
+                                            <input type="text" v-model="number" class="num" readonly="readonly">
+                                            <i class="plus" @click="add">＋</i>
                                        </span>
-                                       <em>Stock: <span>136</span></em>
+                                       <em>Stock: <span>{{productData.price.goods_stock}}</span></em>
                                     </ul>                                    
                                 </li>
                             </ul>
                             <div class="btn-f clearfix">
-                                <div>
+                                <div @click="buyBtn">
                                     <a href="javascript:;">Buy</a>
                                 </div>
                                 <div>
@@ -126,18 +91,13 @@
                         <div class="nav-center clearfix btnPro">
                             <span>Goods info</span>
                             <span>Reviews<em>(0)</em></span>
-                            <div class="buyPro">
+                            <div class="buyPro" @click="buyBtn">
                                 <a href="javascript:;" class="nav-buy">Buy</a>
                             </div>
                         </div>
-                        <div class="conPro">
-                            <img src="static/images/product_03.jpg" alt="">
-                            <img src="./static/images/p-content.jpg" alt="">  
-                        </div>
-                        <div class="conPro">
-                            reviews
-                            <img src="static/images/p-content.jpg" alt="">
-                        </div>                       
+                        <div class="conPro" v-html="productData.goods_content">
+                            
+                        </div>                    
                     </div>
                 </div>
             </div>  
@@ -158,10 +118,12 @@
         </div>
         <!-- 置顶导航栏结束 -->
     </div>
-
+    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/node_modules/vue/dist/vue.js"></script>
+    <script src="api/common.js"></script>
+    <script src="static/js/mescroll.min.js"></script>
     <script src="./static/js/jquery-1.7.1.min.js"></script>
     <script src="./api/productDetails.js"></script>
-    <script src="./static/js/magnifier.js"></script>
     <script src="./static/js/jquery.jqzoom.js"></script>
 </body>
 </html>

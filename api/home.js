@@ -17,10 +17,12 @@ new Vue({
 	        },
 	        loop: true
 		},
+        // 首页数据
 		homeData: null,
 		mescroll: null,
+        // 上拉加载
 		page: 0,
-		pageSize: 30,
+		pageSize: 4,
 		set_position: 12,
 		hotProductData: [],
 		totalPages: null,
@@ -32,6 +34,7 @@ new Vue({
 	mounted: function () {
 		var self = this;
 		self.$nextTick(function() {
+            // 获取首页数据
 			self.getHomeData();
             self.navigationShow(false);
 		});
@@ -63,70 +66,130 @@ new Vue({
         });
 	},
     computed: {
-		swiperA() {
-			return this.$refs.awesomeSwiperA.swiper
+		sy: function() {
+			return this.$refs.awesomeSwiperA.swiper;
 		}
     },
     methods: {
     	getHomeData: function () {
     		var self = this;
-    		var param = new URLSearchParams();
-			param.append("terminal", "PC");
-    		axios.post('http://proj7.thatsmags.com/Api/Public/home',param)
-			.then(function (response) {
-				self.homeData = response.data;
-				if (response.data.code == 1) {
-					self.homeData = response.data.data;
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+            
+            
+   //  		var param = new URLSearchParams();
+			// param.append("terminal", "PC");
+   //  		axios.post('http://proj7.thatsmags.com/Api/Public/home',param)
+			// .then(function (response) {
+			// 	self.homeData = response;
+			// 	if (response.code == 1) {
+			// 		self.homeData = response.data;
+			// 	}
+			// })
+			// .catch(function (error) {
+			// 	console.log(error);
+			// });
+            self.http.ajax({
+                type: 'POST',
+                url: 'http://proj7.thatsmags.com/Api/Public/home',
+                data: { terminal: 'PC' },
+                // type of data we are expecting in return:
+
+                success: function(response){
+                    self.homeData = response;
+                    if (response.code == 1) {
+                        self.homeData = response.data;
+                    }
+                },
+                error: function(xhr, type){
+                    console.log(123);
+                }
+            });
     	},
     	upCallback: function () {
-    		console.log(1);
     		var self = this;
     		self.page ++;
-            axios.get('http://api.mall.thatsmags.com/Api/Set/getList', {
-                params: {
+            self.http.ajax({
+                type: 'get',
+                url: 'http://api.mall.thatsmags.com/Api/Set/getList',
+                data: { 
                     set_position: self.set_position,
                     p: self.page,
                     pageSize: self.pageSize
+                },
+                success: function(response){
+                    // self.homeData = response;
+                    if (response.code == 1) {
+                        self.hotProductData = self.hotProductData.concat(response.data.goods);
+                        self.totalPages = response.data.totalPages;
+                        self.mescroll.endUpScroll(self.totalPages == self.page || self.totalPages==0 || self.page==2);
+                        if(self.totalPages == self.page || self.totalPages==0 || self.page==2) {
+                            self.footerShow = true;
+                        }
+                    }
+                },
+                error: function(xhr, type){
+                    self.mescroll.endErr();
+                    self.mescroll.endUpScroll(true);
+                    self.footerShow = true;
                 }
-            })
-            .then(function(res){
-            	if (res.data.code == 1) {
-            		self.hotProductData = self.hotProductData.concat(res.data.data.goods);
-            		self.totalPages = res.data.data.totalPages;
-            		console.log(self.totalPages)
-            		self.mescroll.endUpScroll(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2);
-            		if(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2) {
-            			self.footerShow = true;
-            		}
-            	}
-               
-            })
-            .catch(function(err){
-                self.mescroll.endErr();
-                self.mescroll.endUpScroll(true);
             });
+            // axios.get('http://api.mall.thatsmags.com/Api/Set/getList', {
+            //     params: {
+            //         set_position: self.set_position,
+            //         p: self.page,
+            //         pageSize: self.pageSize
+            //     }
+            // })
+            // .then(function(response){
+            	// if (res.data.code == 1) {
+            	// 	self.hotProductData = self.hotProductData.concat(res.data.data.goods);
+            	// 	self.totalPages = res.data.data.totalPages;
+            	// 	console.log(self.totalPages)
+            	// 	self.mescroll.endUpScroll(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2);
+            	// 	if(self.totalPages == self.page || self.totalPages==0 || self.totalPages==2) {
+            	// 		self.footerShow = true;
+            	// 	}
+            	// }
+               
+            // })
+            // .catch(function(err){
+            //     self.mescroll.endErr();
+            //     self.mescroll.endUpScroll(true);
+            // });
     		
     	},
     	navigationShow: function(data) {
     		var self = this;
     		
     		if(!self.allNavigationData) {
-    			axios.get('http://api.mall.thatsmags.com/Api/Archive/getGoodsCats')
-	            .then(function(res){
-	            	console.log(res);
-	            	if (res.data.code == 1) {
-	            		self.allNavigationData = res.data.data;
-	            		self.allNavigationShow = data;
-	            	}
-	            })
-	            .catch(function(err){
-	                console.log(err)
-	            });
+    			// axios.get('http://api.mall.thatsmags.com/Api/Archive/getGoodsCats')
+	      //       .then(function(res){
+	      //       	console.log(res);
+	      //       	if (res.data.code == 1) {
+	      //       		self.allNavigationData = res.data.data;
+	      //       		self.allNavigationShow = data;
+	      //       	}
+	      //       })
+	      //       .catch(function(err){
+	      //           console.log(err)
+	      //       });
+                self.http.ajax({
+                    type: 'get',
+                    url: 'http://api.mall.thatsmags.com/Api/Archive/getGoodsCats',
+                    data: { 
+                        set_position: self.set_position,
+                        p: self.page,
+                        pageSize: self.pageSize
+                    },
+                    success: function(response){
+                        if (response.code == 1) {
+                            self.allNavigationData = response.data;
+                            self.allNavigationShow = data;
+                        }
+                    },
+                    error: function(xhr, type){
+                       
+                    }
+                });
     		} else {
     			self.allNavigationShow = true;
     		}

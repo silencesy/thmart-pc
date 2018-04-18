@@ -1,5 +1,4 @@
 (function($){
-
 		$.fn.jqueryzoom = function(options){
 			var settings = {
 				xzoom: 200,//zoomed width default width
@@ -168,6 +167,16 @@ this.y = e.pageY
 
 
 }
+
+//鼠标经过预览图片
+function preview(img){
+	$("#preview .jqzoom img").attr("src",$(img).attr("src"));
+	$("#preview .jqzoom img").attr("jqimg",$(img).attr("bimg"));
+}
+//图片放大镜效果
+$(function(){
+	$(".jqzoom").jqueryzoom({xzoom:380,yzoom:410});
+});
 
 
 /* 代码整理：懒人之家 www.lanrenzhijia.com */
