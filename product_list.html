@@ -6,71 +6,6 @@
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_2ghiz6nkwlo3l3di.css">
     <link rel="stylesheet" href="static/css/mescroll.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
-    <style>
-        .th-product-box {
-            width: 1000px;
-            margin: 0 auto;
-            visibility: hidden;
-        }
-        .th-product-box:after {
-          content: '';
-          display: block;
-          clear: both;
-        }
-        .th-product-item {
-            width: 235px;
-            height: auto;
-            margin-bottom: 10px;
-            background-color: #fff;
-            cursor: pointer;
-            
-        }
-    
-        .th-product-item:hover {
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
-            transition: all .3s linear;
-        }
-
-        .th-product-item img {
-            width: 100%;
-        }
-        .th-product-item p {
-            padding: 20px 10px;
-        }
-        .showorhide {
-            visibility: visible;
-        }
-        .th-product-title {
-            height: 40px;
-            line-height: 40px;
-            padding: 0 15px;
-        }
-        .th-product-Sorting {
-            padding: 0 15px;
-            height: 40px;
-            line-height: 40px;
-            background-color: #fff;
-            margin-bottom: 15px;
-        }
-        .th-product-Sorting span {
-            display: inline-block;
-            height: 100%;
-            padding: 0 28px;
-            float: left;
-            cursor: pointer;
-        }
-        .th-product-Sorting span:nth-child(1) {
-            padding: 0 28px 0 0;
-        }
-        .th-product-Sorting em {
-            display: inline-block;
-            height: 20px;
-            margin-top: 10px;
-            width: 1px;
-            background-color: #bababa;
-            float: left;
-        }
-    </style>
 </head>
 
 <body>
@@ -80,17 +15,24 @@
             <div class="th-product-banner banxin">
                 <div class="th-product-title"><a href="./home-page.html">home</a> > {{proName}}</div>
                 <div class="th-product-Sorting">
-                    <span class="theme_color">All</span>
-                    <em></em>
-                    <span>Sales<i class="iconfont icon-xiangshang rotate"></i></span>
-                    <em></em>
-                    <span>Price<i class="iconfont icon-xiangshang rotate"></i></span>
+                    <div v-for="(item,index) in titleList" v-if="index==0" @click="sortPtoduct(item.sort,index)">
+                        <span :class="{theme_color: index==activeNumber}">{{item.name}}</span>
+                        <em></em>
+                    </div>
+                    <div v-else-if="index==2" @click="sortPtoduct(item.sort==1?2:1,index)">
+                        <span :class="{theme_color: index==activeNumber}">{{item.name}}<i class="iconfont icon-xiangshang" :class="{rotate: upDown}"></i></span>
+                    </div>
+                    <div v-else @click="sortPtoduct(item.sort,index)">
+                        <span :class="{theme_color: index==activeNumber}">{{item.name}}<i class="iconfont icon-xiangshang"></i></span>
+                        <em></em>
+                    </div>
                 </div>
             </div>
             <div class="th-product-box" :class="{ showorhide: isActive }">
                 <div class="th-product-item" v-for="item in listData" >
                     <a :href="['./product-details.html?id=']+item.id">
                         <img :src="item.coverpic" alt="">
+                        <div><em class="theme_color">￥{{item.goods_price}}</em><i class="iconfont icon-cart-on fr"></i></div>
                         <p v-text="item.goods_name"></p>
                     </a>
                     
@@ -98,7 +40,7 @@
             </div>
         </div>
     </div>
-    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/js/ajax.js"></script>
     <script src="static/js/mescroll.min.js"></script>
     <script src="static/node_modules/vue/dist/vue.js"></script>
     <!-- <script src="static/node_modules/vue-lazyload/vue-lazyload.js"></script> -->

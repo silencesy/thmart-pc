@@ -7,47 +7,7 @@
     <link rel="stylesheet" href="static/css/mescroll.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
     <style>
-        .th-product-box {
-            width: 1000px;
-            margin: 0 auto;
-            visibility: hidden;
-        }
-        .th-product-box:after {
-          content: '';
-          display: block;
-          clear: both;
-        }
-        .th-product-item {
-            width: 235px;
-            height: auto;
-            margin-bottom: 10px;
-            background-color: #fff;
-            cursor: pointer;
-            
-        }
-    
-        .th-product-item:hover {
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
-            transition: all .3s linear;
-        }
-
-        .th-product-item img {
-            width: 100%;
-        }
-        .th-product-item p {
-            padding: 20px 10px;
-        }
-        .showorhide {
-            visibility: visible;
-        }
-        .banner-img {
-            width: 100%;
-            height: 340px;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            margin-bottom: 20px;
-        }
+        
     </style>
 </head>
 
@@ -62,32 +22,26 @@
                     <a :href="['./product-details.html?id=']+item.id">
                         <div class="th-product-item" >
                             <img :src="item.set_img" alt="">
+                            <div><em class="theme_color">￥{{item.goods_price}}</em><i class="iconfont icon-cart-on fr"></i></div>
                             <p v-text="item.goods_name"></p>
                         </div>
                     </a>
                 </div>
-                <div v-else v-for="item in listData">
+                <div v-else>
                     <a :href="['./product-details.html?id=']+item.id">
                         <div class="th-product-item" >
                             <img :src="item.coverpic" alt="">
+                            <div><em class="theme_color">￥{{item.goods_price}}</em><i class="iconfont icon-cart-on fr"></i></div>
                             <p v-text="item.goods_name"></p>
                         </div>
                     </a>
                 </div>
-                
-                <!-- <div v-else >
-                    <a href="#">
-                        <div class="th-product-item" v-for="item in listData">
-                            <img :src="item.coverpic" alt="">
-                            <p v-text="item.goods_name"></p>
-                        </div>
-                    </a>
-                </div> -->
             </div>
             <th-footer v-if="footerShow"></th-footer>  
         </div>
     </div>
-    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <!-- <script src="static/node_modules/axios/dist/axios.js"></script> -->
+    <script src="static/js/ajax.js"></script>
     <script src="static/js/mescroll.min.js"></script>
     <script src="static/node_modules/vue/dist/vue.js"></script>
     <!-- <script src="static/node_modules/vue-lazyload/vue-lazyload.js"></script> -->

@@ -202,7 +202,8 @@ body {
     font-size: 15px;
     margin: 0 5px;
     display: inline-block;
-    transform: rotate(180deg);
+    transform: rotate(0deg)!important;
+    tras
 }
 
 .iconfont.icon-jiazai {
@@ -226,6 +227,14 @@ body {
 
 .iconfont.icon-icon {
 	font-weight: 500;
+}
+
+.iconfont.icon-xiangshang:before {
+    font-size: 15px;
+    margin: 0 5px;
+    display: inline-block;
+    transform: rotate(180deg);
+    transition: all 0.2s;
 }
 
 /**** 字体图标结束 ****/ 
@@ -3981,8 +3990,80 @@ button, input, select, textarea {
 
 
 
+.th-product-box {
+    width: 1000px;
+    margin: 0 auto;
+    visibility: hidden;
+}
+.th-product-box:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.th-product-item {
+    width: 235px;
+    height: auto;
+    margin-bottom: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    
+}
 
+.th-product-item:hover {
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+    transition: all .3s linear;
+}
 
+.th-product-item img {
+    width: 100%;
+}
+.th-product-item p {
+    padding: 5px 10px 15px 10px;
+}
+.th-product-item > div {
+    padding: 15px 10px 0 10px;
+}
+.showorhide {
+    visibility: visible;
+}
+.banner-img {
+    width: 100%;
+    height: 340px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 20px;
+}
+.th-product-title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+}
+.th-product-Sorting {
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+.th-product-Sorting span {
+    display: inline-block;
+    height: 100%;
+    padding: 0 28px;
+    float: left;
+    cursor: pointer;
+}
+.th-product-Sorting span {
+    // padding: 0 10px 0 0;
+}
+.th-product-Sorting em {
+    display: inline-block;
+    height: 20px;
+    margin-top: 10px;
+    width: 1px;
+    background-color: #bababa;
+    float: left;
+}
 
 
 

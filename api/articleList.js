@@ -22,41 +22,78 @@ new Vue({
 		upCallback: function() {
 			var self = this;
 			self.page ++;
-            axios.get('http://proj7.thatsmags.com/Api/Article/getList', {
-                params: {
+            self.http.ajax({
+                type: 'GET',
+                url: 'http://proj7.thatsmags.com/Api/Article/getList',
+                data: {
                     cat_id: self.catId,
                     p: self.page,
                     pageSize: self.pageSize
-                }
-            })
-            .then(function(res){
-            	console.log(res)
-                if (res.data.code==1) {
-                    self.tabs = res.data.data.cat;
-                    self.banner = res.data.data.banner;
-                    self.totalPages = res.data.data.totalPages;
-                    if (self.tabContents.length == 0 && self.flag == 0) {
-                        self.flag ++;
-                        self.tabContents[self.num] = [];
-                    }
-                    for ( item in res.data.data.articles) {
-                        self.tabContents[self.num].push(res.data.data.articles[item]);
-                    }
-                    self.$nextTick(function(){
-                        console.log(1)
-                        var imgLoadBox = this.$el.querySelector('.article-list');
-                        var imgLoad = imagesLoaded( imgLoadBox, function() {
-                            self.newMasonry();
-                        });  
-                    });
-                    self.mescroll.endUpScroll(self.totalPages==self.page);
-                } else {
+                },
+                success: function(data){
+                    if (data.code==1) {
+                        self.tabs = data.data.cat;
+                        self.banner = data.data.banner;
+                        self.totalPages = data.data.totalPages;
+                        if (self.tabContents.length == 0 && self.flag == 0) {
+                            self.flag ++;
+                            self.tabContents[self.num] = [];
+                        }
+                        for ( item in data.data.articles) {
+                            self.tabContents[self.num].push(data.data.articles[item]);
+                        }
+                        self.$nextTick(function(){
+                            console.log(1)
+                            var imgLoadBox = this.$el.querySelector('.article-list');
+                            var imgLoad = imagesLoaded( imgLoadBox, function() {
+                                self.newMasonry();
+                            });  
+                        });
+                        self.mescroll.endUpScroll(self.totalPages==self.page);
+                    } else {
 
+                    }
+                },
+                error: function(xhr, type){
+                    self.mescroll.endErr();
                 }
             })
-            .catch(function(err){
-                self.mescroll.endErr();
-            });
+            
+            // axios.get('http://proj7.thatsmags.com/Api/Article/getList', {
+            //     params: {
+            //         cat_id: self.catId,
+            //         p: self.page,
+            //         pageSize: self.pageSize
+            //     }
+            // })
+            // .then(function(res){
+            // 	console.log(res)
+            //     if (data.code==1) {
+            //         self.tabs = res.data.data.cat;
+            //         self.banner = res.data.data.banner;
+            //         self.totalPages = res.data.data.totalPages;
+            //         if (self.tabContents.length == 0 && self.flag == 0) {
+            //             self.flag ++;
+            //             self.tabContents[self.num] = [];
+            //         }
+            //         for ( item in res.data.data.articles) {
+            //             self.tabContents[self.num].push(res.data.data.articles[item]);
+            //         }
+            //         self.$nextTick(function(){
+            //             console.log(1)
+            //             var imgLoadBox = this.$el.querySelector('.article-list');
+            //             var imgLoad = imagesLoaded( imgLoadBox, function() {
+            //                 self.newMasonry();
+            //             });  
+            //         });
+            //         self.mescroll.endUpScroll(self.totalPages==self.page);
+            //     } else {
+
+            //     }
+            // })
+            // .catch(function(err){
+            //     self.mescroll.endErr();
+            // });
 		},
         tab(index) {
             var self = this;

@@ -12,6 +12,7 @@
 
 <body>
     <div class="wrapper" id="productDetails" v-cloak v-if="productData">
+        <th-header></th-header>
         <div class="container">
             <!-- 商品详情开始 -->
             <div class="productDetails-all clearfix">
@@ -117,13 +118,14 @@
             </div>
         </div>
         <!-- 置顶导航栏结束 -->
+        <th-footer></th-footer>
     </div>
-    <script src="static/node_modules/axios/dist/axios.js"></script>
+   <script src="static/node_modules/axios/dist/axios.js"></script>
     <script src="static/node_modules/vue/dist/vue.js"></script>
     <script src="api/common.js"></script>
     <script src="static/js/mescroll.min.js"></script>
-    <script src="./static/js/jquery-1.7.1.min.js"></script>
+    <script src="components/th-components.js"></script>
     <script src="./api/productDetails.js"></script>
-    <script src="./static/js/jquery.jqzoom.js"></script>
+    <!-- <script src="./static/js/jquery.jqzoom.js"></script> -->
 </body>
 </html>

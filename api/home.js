@@ -22,7 +22,7 @@ new Vue({
 		mescroll: null,
         // 上拉加载
 		page: 0,
-		pageSize: 4,
+		pageSize: 30,
 		set_position: 12,
 		hotProductData: [],
 		totalPages: null,

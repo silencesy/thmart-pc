@@ -61,10 +61,10 @@
 </head>
 
 <body>
-    <div class="wrapper" id="articleList">
+    <div class="wrapper" id="articleList" v-cloak>
         <div>
-            <th-header></th-header>    
-            <th-banner></th-banner>
+            <!-- <th-header></th-header>    
+            <th-banner></th-banner> -->
             <div class="banner-img" :style="{backgroundImage:`url(${banner})`}"></div>
             <div class="container">
                 <!-- <th-ad></th-ad> -->
@@ -104,12 +104,12 @@
             </div>
         </div>
     </div>
-    <script src="static/node_modules/axios/dist/axios.js"></script>
+    <script src="static/js/ajax.js"></script>
     <script src="static/node_modules/vue/dist/vue.js"></script>
     <script src="static/js/mescroll.min.js"></script>
     <script src="static/js/imagesloaded.pkgd.min.js"></script>
     <script src="static/js/masonry.min.js"></script>
-    <script src="./components/th-components.js"></script>
+    <!-- <script src="./components/th-components.js"></script> -->
     <script src="./api/common.js"></script>
     <script src="./api/articleList.js"></script>
 </body>

@@ -3,7 +3,7 @@ new Vue({
 	data: {
 		mescroll: null,
 		page: 0,
-		pageSize: 16,
+		pageSize: 18,
 		listData: [],
 		totalPages: 0,
 		catId: null,
@@ -20,10 +20,12 @@ new Vue({
             name: "Sales",
             sort: 3
         },{
-            name: "Sales",
-            sort: 2
+            name: "Price",
+            sort: 1
         }],
-        sort: null
+        sort: null,
+        activeNumber: 0,
+        upDown: false
 	},
 	components: {
 		
@@ -63,43 +65,80 @@ new Vue({
 			var self = this;
             self.catId = self.getUrlParameter("id");
 			self.page ++;
-            axios.get('http://proj7.thatsmags.com/Api/Archive/getList', {
-                params: {
+            self.http.ajax({
+                type: 'GET',
+                url: 'http://proj7.thatsmags.com/Api/Archive/getList',
+                data: {
                     cat_id: self.catId,
                     p: self.page,
                     pageSize: self.pageSize,
                     sort: self.sort
-                }
-            })
-            .then(function(res){
-                console.log(res.data);
-                if (res.data.code==1) {
-                    self.flag++;
-                    var i;
-                    for (i in res.data.data.goods) { 
-                        self.listData.push(res.data.data.goods[i]);
-                    }
-                    self.proName = res.data.data.cat_name;
-                    // console.log(self.msnry.masonry());
-                    self.mescroll.endUpScroll(self.page == res.data.data.totalPages);
-                    // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);
-                    self.$nextTick(function(){
-                        var imgLoadBox = this.$el.querySelector('.th-product-box');
-                        var imgLoad = imagesLoaded( imgLoadBox, function() {
-                            self.newMasonry();
-                            self.isActive = true;
+                },
+                success: function(data){
+                    if (data.code==1) {
+                        self.flag++;
+                        var i;
+                        for (i in data.data.goods) { 
+                            self.listData.push(data.data.goods[i]);
+                        }
+                        self.proName = data.data.cat_name;
+                        // console.log(self.msnry.masonry());
+                        self.mescroll.endUpScroll(self.page == data.data.totalPages);
+                        // self.minirefresh.endUpLoading(self.page == data.data.totalPages);
+                        self.$nextTick(function(){
+                            var imgLoadBox = this.$el.querySelector('.th-product-box');
+                            var imgLoad = imagesLoaded( imgLoadBox, function() {
+                                self.newMasonry();
+                                self.isActive = true;
+                            });
+                            console.log(imgLoad);
+                            
                         });
-                        console.log(imgLoad);
-                        
-                    });
-
-                } else {
-
+                    } else {
+                        self.mescroll.endUpScroll(true);
+                    }
+                },
+                error: function(xhr, type){
+                    self.mescroll.endUpScroll(true);
                 }
             })
-            .catch(function(err){
-                self.mescroll.endUpScroll(true);
-            });
+            // axios.get('http://proj7.thatsmags.com/Api/Archive/getList', {
+            //     params: {
+            //         cat_id: self.catId,
+            //         p: self.page,
+            //         pageSize: self.pageSize,
+            //         sort: self.sort
+            //     }
+            // })
+            // .then(function(res){
+            //     console.log(data);
+            //     if (res.data.code==1) {
+            //         self.flag++;
+            //         var i;
+            //         for (i in res.data.data.goods) { 
+            //             self.listData.push(res.data.data.goods[i]);
+            //         }
+            //         self.proName = res.data.data.cat_name;
+            //         // console.log(self.msnry.masonry());
+            //         self.mescroll.endUpScroll(self.page == res.data.data.totalPages);
+            //         // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);
+            //         self.$nextTick(function(){
+            //             var imgLoadBox = this.$el.querySelector('.th-product-box');
+            //             var imgLoad = imagesLoaded( imgLoadBox, function() {
+            //                 self.newMasonry();
+            //                 self.isActive = true;
+            //             });
+            //             console.log(imgLoad);
+                        
+            //         });
+
+            //     } else {
+
+            //     }
+            // })
+            // .catch(function(err){
+            //     self.mescroll.endUpScroll(true);
+            // });
 		},
         newMasonry: function () {
             this.grid = this.$el.querySelector('.th-product-box');
@@ -107,6 +146,21 @@ new Vue({
                 "gutter": 20,
                 itemSelector: '.th-product-item'
             });
+        },
+        sortPtoduct: function (sortNumer,activeNumber) {
+            var self = this;
+            self.sort = sortNumer;
+            self.titleList[2].sort = sortNumer;
+            if (sortNumer==null||sortNumer==3) {
+                self.upDown=false;
+                self.titleList[2].sort=true;
+            } else {
+                self.titleList[2].sort==2?self.upDown=false:self.upDown=true;
+            }
+            self.activeNumber = activeNumber;
+            self.page = 0;
+            self.listData.length = 0;
+            self.mescroll.triggerUpScroll();
         }
 	}
 

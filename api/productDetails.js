@@ -67,6 +67,24 @@ new Vue({
             .catch(function (error) {
                 console.log(error);
             });
+            // self.http.ajax({
+            //     type: 'GET',
+            //     url: 'http://proj7.thatsmags.com/Api/Sku/getList',
+            //     data: {
+            //         goods_id: self.getUrlParameter('id'),
+            //         min_stock: 1
+            //     },
+            //     success: function(data){
+            //         if (data.code==1) {
+            //             console.log(data);
+            //         } else {
+            //             self.mescroll.endUpScroll(true)
+            //         }
+            //     },
+            //     error: function(xhr, type){
+            //         self.mescroll.endUpScroll(true)
+            //     }
+            // })
         },
         clickActiveOne: function (index,item) {
             var self = this;

@@ -44,21 +44,41 @@ new Vue({
 		},
 		upCallback: function () {
 			var self = this;
-			self.articleId = self.getUrlParameter("id");
-			var param = new URLSearchParams();
-			param.append("id", self.articleId);
-			axios.post('http://proj7.thatsmags.com/Api/Article/getDetail',param)
-			.then(function (response) {
-				if (response.data.code == 1) {
-					self.articleDtailData = response.data.data;
-					self.mescroll.endUpScroll(true);
-				} else {
-					console.log(error);
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+			// self.articleId = self.getUrlParameter("id");
+			// var param = new URLSearchParams();
+			// param.append("id", self.articleId);
+			// axios.post('http://proj7.thatsmags.com/Api/Article/getDetail',param)
+			// .then(function (response) {
+			// 	if (response.data.code == 1) {
+			// 		self.articleDtailData = response.data.data;
+			// 		self.mescroll.endUpScroll(true);
+			// 	} else {
+			// 		console.log(error);
+			// 	}
+			// })
+			// .catch(function (error) {
+			// 	console.log(error);
+			// });
+
+
+			self.http.ajax({
+                type: 'POST',
+                url: 'http://proj7.thatsmags.com/Api/Article/getDetail',
+                data: {
+                    id: self.getUrlParameter("id")
+                },
+                success: function(data){
+                    if (data.code==1) {
+                       	self.articleDtailData = data.data;
+						self.mescroll.endUpScroll(true);
+                    } else {
+                    	console.log("error");
+                    }
+                },
+                error: function(xhr, type){
+                    console.log("error");
+                }
+            })
 		}
 	}
 });

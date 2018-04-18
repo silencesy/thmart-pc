@@ -57,127 +57,243 @@ new Vue({
             if (self.getUrlParameter('id') == 'deal') {
                 self.deal = true;
                 self.page ++;
-                axios.get('http://proj7.thatsmags.com/Api/Set/getList', {
-                    params: {
+                // axios.get('http://proj7.thatsmags.com/Api/Set/getList', {
+                //     params: {
+                //         set_position: 17,
+                //         p: self.page,
+                //         pageSize: self.pageSize
+                //     }
+                // })
+                // .then(function(res){
+                //     console.log(data);
+                //     if (res.data.code==1) {
+                //         self.flag++;
+                //         self.banner = res.data.data.banner;
+                //         var i;
+                //         for (i in res.data.data.goods) { 
+                //             self.listData.push(res.data.data.goods[i]);
+                //         }
+                //         // console.log(self.msnry.masonry());
+                //         self.mescroll.endUpScroll(self.page == res.data.data.totalPages || res.data.data.totalPages == 0);
+                //         if (self.page == res.data.data.totalPages || res.data.data.totalPages == 0) {
+                //             self.footerShow = true;
+                //         }
+                //         // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);
+                //         self.$nextTick(function(){
+                //             var imgLoadBox = this.$el.querySelector('.th-product-box');
+                //             var imgLoad = imagesLoaded( imgLoadBox, function() {
+                //                 self.newMasonry();
+                //                 self.isActive = true;
+                //             });
+                //             console.log(imgLoad);
+                            
+                //         });
+
+                //     } else {
+
+                //     }
+                // })
+                // .catch(function(err){
+                //     self.mescroll.endUpScroll(true);
+                // });
+                self.http.ajax({
+                    type: 'GET',
+                    url: 'http://proj7.thatsmags.com/Api/Set/getList',
+                    data: {
                         set_position: 17,
                         p: self.page,
                         pageSize: self.pageSize
-                    }
-                })
-                .then(function(res){
-                    console.log(res.data);
-                    if (res.data.code==1) {
-                        self.flag++;
-                        self.banner = res.data.data.banner;
-                        var i;
-                        for (i in res.data.data.goods) { 
-                            self.listData.push(res.data.data.goods[i]);
-                        }
-                        // console.log(self.msnry.masonry());
-                        self.mescroll.endUpScroll(self.page == res.data.data.totalPages || res.data.data.totalPages == 0);
-                        if (self.page == res.data.data.totalPages || res.data.data.totalPages == 0) {
-                            self.footerShow = true;
-                        }
-                        // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);
-                        self.$nextTick(function(){
-                            var imgLoadBox = this.$el.querySelector('.th-product-box');
-                            var imgLoad = imagesLoaded( imgLoadBox, function() {
-                                self.newMasonry();
-                                self.isActive = true;
+                    },
+                    success: function(data){
+                        if (data.code==1) {
+                            self.flag++;
+                            self.banner = data.data.banner;
+                            var i;
+                            for (i in data.data.goods) { 
+                                self.listData.push(data.data.goods[i]);
+                            }
+                            // console.log(self.msnry.masonry());
+                            self.mescroll.endUpScroll(self.page == data.data.totalPages || data.data.totalPages == 0);
+                            if (self.page == data.data.totalPages || data.data.totalPages == 0) {
+                                self.footerShow = true;
+                            }
+                            // self.minirefresh.endUpLoading(self.page == data.data.totalPages);
+                            self.$nextTick(function(){
+                                var imgLoadBox = this.$el.querySelector('.th-product-box');
+                                var imgLoad = imagesLoaded( imgLoadBox, function() {
+                                    self.newMasonry();
+                                    self.isActive = true;
+                                });
+                                console.log(imgLoad);
+                                
                             });
-                            console.log(imgLoad);
-                            
-                        });
-
-                    } else {
-
+                        } else {
+                            self.mescroll.endUpScroll(true);
+                        }
+                    },
+                    error: function(xhr, type){
+                        self.mescroll.endUpScroll(true);
                     }
                 })
-                .catch(function(err){
-                    self.mescroll.endUpScroll(true);
-                });
             } else if (self.getUrlParameter('id') == 'feaProduct') {
                 self.page ++;
                 self.deal = true;
-                axios.get('http://proj7.thatsmags.com/Api/Set/getList', {
-                    params: {
+                self.http.ajax({
+                    type: 'GET',
+                    url: 'http://proj7.thatsmags.com/Api/Set/getList',
+                    data: {
                         set_position: 4,
                         p: self.page,
                         pageSize: self.pageSize
-                    }
-                })
-                .then(function(res){
-                    console.log(res.data);
-                    if (res.data.code==1) {
-                        self.banner = res.data.data.banner;
-                        self.flag++;
-                        var i;
-                        for (i in res.data.data.goods) { 
-                            self.listData.push(res.data.data.goods[i]);
-                        }
-                        // console.log(self.msnry.masonry());
-                        self.mescroll.endUpScroll(self.page == res.data.data.totalPages || res.data.data.totalPages == 0);
-                        if (self.page == res.data.data.totalPages || res.data.data.totalPages == 0) {
-                            self.footerShow = true;
-                        }
-                        // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);
-                        self.$nextTick(function(){
-                            var imgLoadBox = this.$el.querySelector('.th-product-box');
-                            var imgLoad = imagesLoaded( imgLoadBox, function() {
-                                self.newMasonry();
-                                self.isActive = true;
+                    },
+                    success: function(data){
+                        if (data.code==1) {
+                            self.banner = data.data.banner;
+                            self.flag++;
+                            var i;
+                            for (i in data.data.goods) { 
+                                self.listData.push(data.data.goods[i]);
+                            }
+                            // console.log(self.msnry.masonry());
+                            self.mescroll.endUpScroll(self.page == data.data.totalPages || data.data.totalPages == 0);
+                            if (self.page == data.data.totalPages || data.data.totalPages == 0) {
+                                self.footerShow = true;
+                            }
+                            // self.minirefresh.endUpLoading(self.page == data.data.totalPages);
+                            self.$nextTick(function(){
+                                var imgLoadBox = this.$el.querySelector('.th-product-box');
+                                var imgLoad = imagesLoaded( imgLoadBox, function() {
+                                    self.newMasonry();
+                                    self.isActive = true;
+                                });
+                                console.log(imgLoad);
+                                
                             });
-                            console.log(imgLoad);
-                            
-                        });
-
-                    } else {
-
+                        } else {
+                            self.mescroll.endUpScroll(true);
+                        }
+                    },
+                    error: function(xhr, type){
+                        self.mescroll.endUpScroll(true);
                     }
                 })
-                .catch(function(err){
-                    self.mescroll.endUpScroll(true);
-                });
+                // axios.get('http://proj7.thatsmags.com/Api/Set/getList', {
+                //     params: {
+                //         set_position: 4,
+                //         p: self.page,
+                //         pageSize: self.pageSize
+                //     }
+                // })
+                // .then(function(res){
+                //     console.log(res.data);
+                //     if (res.data.code==1) {
+                //         self.banner = res.data.data.banner;
+                //         self.flag++;
+                //         var i;
+                //         for (i in res.data.data.goods) { 
+                //             self.listData.push(res.data.data.goods[i]);
+                //         }
+                //         // console.log(self.msnry.masonry());
+                //         self.mescroll.endUpScroll(self.page == res.data.data.totalPages || res.data.data.totalPages == 0);
+                //         if (self.page == res.data.data.totalPages || res.data.data.totalPages == 0) {
+                //             self.footerShow = true;
+                //         }
+                //         // self.minirefresh.endUpLoading(self.page == res.data.data.totalPages);
+                //         self.$nextTick(function(){
+                //             var imgLoadBox = this.$el.querySelector('.th-product-box');
+                //             var imgLoad = imagesLoaded( imgLoadBox, function() {
+                //                 self.newMasonry();
+                //                 self.isActive = true;
+                //             });
+                //             console.log(imgLoad);
+                            
+                //         });
+
+                //     } else {
+
+                //     }
+                // })
+                // .catch(function(err){
+                //     self.mescroll.endUpScroll(true);
+                // });
             } else {
                 self.page ++;
                 self.catId = self.getUrlParameter("id");
-                axios.get('http://proj7.thatsmags.com/Api/Archive/getList', {
-                    params: {
+                // axios.get('http://proj7.thatsmags.com/Api/Archive/getList', {
+                //     params: {
+                //         cat_id: self.catId,
+                //         p: self.page,
+                //         pageSize: self.pageSize
+                //     }
+                // })
+                // .then(function(res){
+                //     console.log(res.data);
+                //     if (res.data.code==1) {
+                //         self.banner = res.data.data.banner;
+                //         self.flag++;
+                //         var i;
+                //         for (i in res.data.data.goods) { 
+                //             self.listData.push(res.data.data.goods[i]);
+                //         }
+                //         self.mescroll.endUpScroll(self.page == res.data.data.totalPages || res.data.data.totalPages == 0);
+                //         if (self.page == res.data.data.totalPages || res.data.data.totalPages == 0) {
+                //             self.footerShow = true;
+                //         }
+                //         self.$nextTick(function(){
+                //             var imgLoadBox = this.$el.querySelector('.th-product-box');
+                //             var imgLoad = imagesLoaded( imgLoadBox, function() {
+                //                 self.newMasonry();
+                //                 self.isActive = true;
+                //             });
+                //             console.log(imgLoad);
+                            
+                //         });
+
+                //     } else {
+
+                //     }
+                // })
+                // .catch(function(err){
+                //     self.mescroll.endUpScroll(true);
+                // });
+                self.http.ajax({
+                    type: 'GET',
+                    url: 'http://proj7.thatsmags.com/Api/Archive/getList',
+                    data: {
                         cat_id: self.catId,
                         p: self.page,
                         pageSize: self.pageSize
-                    }
-                })
-                .then(function(res){
-                    console.log(res.data);
-                    if (res.data.code==1) {
-                        self.banner = res.data.data.banner;
-                        self.flag++;
-                        var i;
-                        for (i in res.data.data.goods) { 
-                            self.listData.push(res.data.data.goods[i]);
-                        }
-                        self.mescroll.endUpScroll(self.page == res.data.data.totalPages || res.data.data.totalPages == 0);
-                        if (self.page == res.data.data.totalPages || res.data.data.totalPages == 0) {
-                            self.footerShow = true;
-                        }
-                        self.$nextTick(function(){
-                            var imgLoadBox = this.$el.querySelector('.th-product-box');
-                            var imgLoad = imagesLoaded( imgLoadBox, function() {
-                                self.newMasonry();
-                                self.isActive = true;
+                    },
+                    success: function(data){
+                        console.log(data);
+                        if (data.code==1) {
+                            self.banner = data.data.banner;
+                            self.flag++;
+                            var i;
+                            for (i in data.data.goods) { 
+                                self.listData.push(data.data.goods[i]);
+                            }
+                            self.mescroll.endUpScroll(self.page == data.data.totalPages || data.data.totalPages == 0);
+                            if (self.page == data.data.totalPages || data.data.totalPages == 0) {
+                                self.footerShow = true;
+                            }
+                            self.$nextTick(function(){
+                                var imgLoadBox = this.$el.querySelector('.th-product-box');
+                                var imgLoad = imagesLoaded( imgLoadBox, function() {
+                                    self.newMasonry();
+                                    self.isActive = true;
+                                });
+                                console.log(imgLoad);
+                                
                             });
-                            console.log(imgLoad);
-                            
-                        });
-
-                    } else {
-
+                        } else {
+                            self.mescroll.endUpScroll(true);
+                        }
+                    },
+                    error: function(xhr, type){
+                        self.mescroll.endUpScroll(true);
                     }
                 })
-                .catch(function(err){
-                    self.mescroll.endUpScroll(true);
-                });
             }
 			
 		},
