@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"> -->
+    <title>Thatsmart</title>
+    <link rel="stylesheet" href="./static/node_modules/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_493593_xz3b2im75ncm1jor.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <!-- th-header开始 -->
+        <th-header></th-header>
+        <!-- th-header结束 -->
+        <div class="container">
+            <!-- <th-couplet></th-couplet> -->
+            
+            <!-- 评论开始 -->
+            <div class="userWrap cartWarp clearfix">
+                <div class="all-good">
+                    <div class="clearfix cart-title">
+                        <p>All Goods</p>
+                        <div>
+                            <span>Selected goods</span>
+                            <span><i>¥ </i>0000</span>
+                            <div>Pay</div>
+                        </div>
+                    </div>
+                    <div class="cart-head">
+                        <span><i class="iconfont icon-duihao1"></i>Select all</span>
+                        <span>Item</span>
+                        <span>Price</span>
+                        <span>Quantity</span>
+                        <span>Subtotal</span>
+                        <span>Edit</span>
+                    </div>
+                    <!-- 每个店铺选中的商品 -->
+                    <div class="cart-shop">
+                        <p><i class="iconfont icon-duihao1"></i>shop name</p>
+                        <div class="shop-product">
+                            <div class="cart-product">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="clearfix">
+                                            <i class="iconfont icon-duihao1"></i>
+                                            <img src="static/images/prolist_06.jpg" alt="">
+                                            <div>
+                                                <p>Item title Item title Item title Item title title Item title Item title Item title title Item title Item title Item title </p>
+                                                <span>Color category : black</span>
+                                                <span>Size : L</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <del>￥1299</del>
+                                        <p>￥1099</p>
+                                    </li>
+                                    <li class="clearfix Quantity-f">
+                                        <span class="jia-jian">
+                                            <i :class="{minus:countColor}" @click="minus">－</i>
+                                            <input type="text" v-model="number" class="num" readonly="readonly">
+                                            <i class="plus" @click="add">＋</i>
+                                       </span>
+                                    </li>
+                                    <li class="real-price">￥1099</li>
+                                    <li class="iconfont icon-shoucang1"></li>
+                                    <li class="iconfont icon-shanchu"></li>
+                                </ul>                               
+                            </div>
+                            <div class="cart-product">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="clearfix">
+                                            <i class="iconfont icon-duihao1"></i>
+                                            <img src="static/images/prolist_06.jpg" alt="">
+                                            <div>
+                                                <p>Item title Item title Item title Item title title Item title Item title Item title title Item title Item title Item title </p>
+                                                <span>Color category : black</span>
+                                                <span>Size : L</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <del>￥1299</del>
+                                        <p>￥1099</p>
+                                    </li>
+                                    <li class="clearfix Quantity-f">
+                                        <span class="jia-jian">
+                                            <i :class="{minus:countColor}" @click="minus">－</i>
+                                            <input type="text" v-model="number" class="num" readonly="readonly">
+                                            <i class="plus" @click="add">＋</i>
+                                       </span>
+                                    </li>
+                                    <li class="real-price">￥1099</li>
+                                    <li class="iconfont icon-shoucang1"></li>
+                                    <li class="iconfont icon-shanchu"></li>
+                                </ul>                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-shop">
+                        <p><i class="iconfont icon-duihao1"></i>shop name</p>
+                        <div class="shop-product">
+                            <div class="cart-product">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="clearfix">
+                                            <i class="iconfont icon-duihao1"></i>
+                                            <img src="static/images/prolist_06.jpg" alt="">
+                                            <div>
+                                                <p>Item title Item title Item title Item title title Item title Item title Item title title Item title Item title Item title </p>
+                                                <span>Color category : black</span>
+                                                <span>Size : L</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <del>￥1299</del>
+                                        <p>￥1099</p>
+                                    </li>
+                                    <li class="clearfix Quantity-f">
+                                        <span class="jia-jian">
+                                            <i :class="{minus:countColor}" @click="minus">－</i>
+                                            <input type="text" v-model="number" class="num" readonly="readonly">
+                                            <i class="plus" @click="add">＋</i>
+                                       </span>
+                                    </li>
+                                    <li class="real-price">￥1099</li>
+                                    <li class="iconfont icon-shoucang1"></li>
+                                    <li class="iconfont icon-shanchu"></li>
+                                </ul>                               
+                            </div>
+                            <div class="cart-product">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="clearfix">
+                                            <i class="iconfont icon-duihao1"></i>
+                                            <img src="static/images/prolist_06.jpg" alt="">
+                                            <div>
+                                                <p>Item title Item title Item title Item title title Item title Item title Item title title Item title Item title Item title </p>
+                                                <span>Color category : black</span>
+                                                <span>Size : L</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <del>￥1299</del>
+                                        <p>￥1099</p>
+                                    </li>
+                                    <li class="clearfix Quantity-f">
+                                        <span class="jia-jian">
+                                            <i :class="{minus:countColor}" @click="minus">－</i>
+                                            <input type="text" v-model="number" class="num" readonly="readonly">
+                                            <i class="plus" @click="add">＋</i>
+                                       </span>
+                                    </li>
+                                    <li class="real-price">￥1099</li>
+                                    <li class="iconfont icon-shoucang1"></li>
+                                    <li class="iconfont icon-shanchu"></li>
+                                </ul>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-total clearfix">
+                    <div class="cart-select">
+                        <span><i class="iconfont icon-duihao1"></i>Select all</span>
+                        <span class="iconfont icon-shoucang1"></span>
+                        <span class="iconfont icon-shanchu"></span>
+                    </div>
+                    <div class="cart-buy">
+                        <span>Selected <i>3</i> goods</span>
+                        <span>Total：<i>￥1099</i></span>
+                    </div>
+                    <button>Pay</button>
+                </div>
+            </div>
+            <!-- 评论结束 -->
+
+            <!-- 推荐商品开始 -->
+            <div class="recommended_products recommended_products2">
+                <div class="recommended_products_content banxin">
+                    <div class="recommended_products_title">
+                        <span>
+                            <i class="iconfont icon-shangpin"></i>
+                            <em>Featured Products</em>
+                        </span>
+                        <a href="#" class="more">More</a>
+                    </div>
+                    <div class="recommended_products_carousel">
+                        <div class="swiper-container shops-container product-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_01.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution123123</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_02.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_03.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                 <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_01.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_02.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="./static/images/pro_03.jpg" alt="">
+                                        <div class="product_list_info">
+                                            <p>Kindle Paperwhite E-reader - Black,6" High-Resolution</p>
+                                            <p>¥ 1999</p>
+                                            <p>¥ 1299</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next swiper-button-white"></div>
+                            <div class="swiper-button-prev swiper-button-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 推荐商品结束 -->
+
+            <!-- 底部广告开始 -->
+            <div class="ad ad-banner-bottom">
+                <img src="./static/images/ad-bottom.jpg" alt="">
+            </div>
+            <!-- 底部广告结束 -->
+        </div><!-- End container -->
+          
+        <!-- th-footer -->
+        <th-footer></th-footer>
+        <!-- th-footer -->
+    </div>
+
+    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./static/node_modules/swiper/dist/js/swiper.min.js"></script>
+    <script src="static/node_modules/vue/dist/vue.js"></script>
+    <script src="components/th-components.js"></script>
+    <script>
+        new Vue({
+            el: '#app'
+        });
+    </script>
+    <!-- <script src="./api/reviews.js"></script> -->
+</body>
+</html>
