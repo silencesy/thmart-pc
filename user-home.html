@@ -10,85 +10,30 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 顶部栏开始 -->
-        <div class="top_bar">
-            <div class="top_bar_content banxin clearfix">
-                <ul class="user_login fl userName">
-                    <li class="userName-li">UserHome<span class="iconfont icon-xiangshangjiantou-copy-copy-copy"></span></li>
-                    <div class="user-menu clearfix">
-                        <div>
-                            <img src="./static/images/user-img.png" alt="">
-                        </div>
-                        <p>
-                            <a href="" class="iconfont icon-bianji"><span>Edit</span></a>
-                            <a href="">Logout</a>
-                        </p>
-                    </div>
-                </ul>
-                <ul class="user-info fr">
-                    <li><a href="#">Vendor Background</a></li>
-                    <b>|</b>
-                    <li><a href="#">Open Shop</a></li>
-                    <b>|</b>
-                    <li><a href="#">Buyer Centre</a></li>
-                    <b>|</b>
-                    <li><a href="#">My order</a></li>
-                    <b>|</b>
-                    <li><a href="#"><i class="iconfont icon-cart-on"></i>Cart</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- 顶部栏结束 -->
-        <!-- 搜索栏开始 -->
-        <div class="search_bar">
-            <div class="search_bar_content banxin">
-                <div class="logo_box">
-                    <a href="#">
-                        <img src="./static/images/thatsmart-logo.png" alt="">
-                    </a>
-                </div>
-                <div class="search_group">
-                    <i class="iconfont icon-sousuo"></i>
-                    <input type="text" placeholder="Products / Shops">
-                    <button>Search</button>
-                </div>
-                <div class="ad_01">
-                    <a href="#">
-                        <img src="./static/images/ad_01.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- 搜索栏结束 -->  
+    <div class="wrapper" id="userHome">
+        <top></top>
+        <head-nav-two></head-nav-two>
         
         <div class="container">
-            <!-- 对联广告开始 -->
-            <div class="couplet couplet-left">
-                <a href="#">
-                    <img src="./static/images/ad1_left.jpg" alt="">
-                </a>
-                <a class="couplet-close couplet-left-close">X</a>
-            </div>
-            <div class="couplet couplet-right">
-                <a href="#">
-                    <img src="./static/images/ad1_right.jpg" alt="">
-                </a>
-                <a class="couplet-close couplet-right-close">X</a>
-            </div>
-            <!-- 对联广告结束 -->
             
             <!-- 用户中心开始 -->
             <div class="userWrap clearfix">
                 <div class="userTitle clearfix">
-                    <a href="./template/order.html" class="userSelect">Order List</a>
+                    <div class="user-avatar">
+                        <div>
+                            <img src="./static/images/user-img.png" alt="">
+                        </div>
+                        <p>Jay Chou</p>
+                    </div>
+                    <a href="./template/order.html" class="userSelect">Personal Info</a>
+                    <a href="">Order List</a>
                     <a href="">My Cart</a>
-                    <a href="">My Favourite</a>
-                    <a href="./template/reviews.html">Reviews</a>
-                    <a href="./template/refund.html">Refund</a>
-                    <a href="./template/invoice.html">Invoice Info</a>
-                    <a href="">Personal Info</a>
-                    <a href="">shipping Address</a>
+                    <a href="./template/reviews.html">My Favourite</a>
+                    <a href="./template/refund.html">th-Coupons</a>
+                    <a href="./template/invoice.html">Reviews</a>
+                    <a href="">Refund</a>
+                    <a href="">nvoice Info</a>
+                    <a href="">Address Book</a>
                 </div>
                 <div class="userContent">
                     <div class="userInfo clearfix">
@@ -281,8 +226,11 @@
         </div>
         <!-- 底部栏结束 -->
     </div>
-    <script src="./static/node_modules/jquery/dist/jquery.min.js"></script>
-     <script src="./static/node_modules/swiper/dist/js/swiper.min.js"></script>
+    <script src="static/js/ajax.js"></script>
+    <script src="static/node_modules/vue/dist/vue.js"></script>
+    <script src="static/js/mescroll.min.js"></script>
+    <script src="./components/th-components.js"></script>
+    <script src="./api/common.js"></script>
     <script src="./api/userHome.js"></script>
 </body>
 </html>

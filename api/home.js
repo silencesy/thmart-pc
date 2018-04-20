@@ -198,5 +198,6 @@ new Vue({
     	navigationHide: function() {
     		this.allNavigationShow = false;
     	}
+
     }
 })

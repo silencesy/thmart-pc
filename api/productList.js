@@ -159,7 +159,7 @@ new Vue({
             }
             self.activeNumber = activeNumber;
             self.page = 0;
-            self.listData.length = 0;
+            self.listData = [];
             self.mescroll.triggerUpScroll();
         }
 	}

@@ -10,7 +10,8 @@ new Vue({
         active2: 0,
         key1: null,
         key2: null,
-        price_id: null
+        price_id: null,
+        typeOne: [],
     },
     mounted: function () {
         var self = this;
@@ -48,6 +49,7 @@ new Vue({
         upCallback: function () {
             var self = this;
             self.id = self.getUrlParameter('id');
+            
             axios.get('http://proj7.thatsmags.com/Api/Archive/getDetail', {
                 params: {
                     id: self.id
@@ -67,24 +69,14 @@ new Vue({
             .catch(function (error) {
                 console.log(error);
             });
-            // self.http.ajax({
-            //     type: 'GET',
-            //     url: 'http://proj7.thatsmags.com/Api/Sku/getList',
-            //     data: {
-            //         goods_id: self.getUrlParameter('id'),
-            //         min_stock: 1
-            //     },
-            //     success: function(data){
-            //         if (data.code==1) {
-            //             console.log(data);
-            //         } else {
-            //             self.mescroll.endUpScroll(true)
-            //         }
-            //     },
-            //     error: function(xhr, type){
-            //         self.mescroll.endUpScroll(true)
-            //     }
-            // })
+            self.request('Api/Sku/getList',{goods_id: self.id,min_stock: 1},function(data) {
+                console.log(data);
+                console.log(1)
+                
+            },function(xhr){
+                console.log(xhr);
+            });
+
         },
         clickActiveOne: function (index,item) {
             var self = this;
